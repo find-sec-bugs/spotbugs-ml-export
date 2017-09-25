@@ -114,8 +114,8 @@ class ExportMojo : AbstractMojo() {
             return spotBugsIssues
         }
 
-//        log.info("findbugs-result.xml: ${findbugsResults.exists()}")
-//        log.info("class_mapping.csv  : ${classMappingFile.exists()}")
+        log.info("findbugs-result.xml: ${findbugsResults.exists()}")
+        log.info("class_mapping.csv  : ${classMappingFile.exists()}")
 
         val reader = SAXReader()
         val document = reader.read(findbugsResults)

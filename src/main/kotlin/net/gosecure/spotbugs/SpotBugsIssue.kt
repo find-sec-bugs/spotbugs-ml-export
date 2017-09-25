@@ -1,5 +1,6 @@
 package net.gosecure.spotbugs
 
+
 /**
  * Data structure that combine metadata from Sonar and SpotBugs report.
  */
