@@ -12,7 +12,8 @@ class SpotBugsIssue(var sourceFile:String,
                          var bugType: String,
                          var cwe:String,
                          var methodSink:String,
-                         var unknownSource:String) {
+                         var unknownSource:String,
+                         var issue_key:String) {
 
     fun getKey():String {
         return Companion.getKey(sourceFile,startLine,bugType)

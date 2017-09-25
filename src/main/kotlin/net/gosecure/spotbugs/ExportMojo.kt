@@ -69,7 +69,7 @@ class ExportMojo : AbstractMojo() {
                 aggregateResults.createNewFile()
 
                 val writer = aggregateResults.printWriter()
-                writer.println("Source File,Line Number,Group Id,Artifact Id,Author,Bug Type,CWE,Method Sink,Unknown Source,Status")
+                writer.println("Source File,Line Number,Group Id,Artifact Id,Author,Bug Type,CWE,Method Sink,Unknown Source,Status,Key")
                 for(finalIssue in exportedIssues) {
 //                    var finalIssue = entry.value
                     writer.println("${finalIssue.sourceFile},${finalIssue.startLine}," +
@@ -77,7 +77,7 @@ class ExportMojo : AbstractMojo() {
                             "${finalIssue.author},${finalIssue.bugType},"+
                             "${finalIssue.cwe}," +
                             "${finalIssue.methodSink},${finalIssue.unknownSource}," +
-                            "${finalIssue.status}")
+                            "${finalIssue.status},${finalIssue.issue_key}")
                 }
 
                 writer.flush()
@@ -143,7 +143,7 @@ class ExportMojo : AbstractMojo() {
             var issue = SpotBugsIssue(sourceFile.first,
                     sourceFile.second,
                     "","","","",
-                    type, cweid , "", "")
+                    type, cweid , "", "","")
 
             for(stringValue in elem.selectNodes("String")) { //Extra properties
                 val stringElem = stringValue as DefaultElement
@@ -224,70 +224,79 @@ class ExportMojo : AbstractMojo() {
         val projectKey = project.groupId + ":" + project.artifactId
 
 
-        val config = RequestConfig.custom()
+    /*    val config = RequestConfig.custom()
                 .setProxy(HttpHost("127.0.0.1", 8080, "http"))
-                .build()
+                .build() */
 
-        val client = HttpClientBuilder.create().build()
-        val get = HttpGet(URIBuilder("http://localhost:9000/api/issues/search")
-                .addParameter("componentKeys",projectKey)
-                .addParameter("ps", "500")
-                .build())
-        get.config = config
+        var n = 1
+        var nbr_pages = 0
+        while (n == 1 || n <= nbr_pages){
+            val client = HttpClientBuilder.create().build()
+            val get = HttpGet(URIBuilder("http://localhost:9000/api/issues/search")
+                    .addParameter("componentKeys",projectKey)
+                    .addParameter("ps", "500")
+                    .addParameter("p",n.toString())
+                    .build())
+            //get.config = config
 
-        val response = client.execute(get)
+            val response = client.execute(get)
 
-        val responseCode = response.statusLine.statusCode
+            val responseCode = response.statusLine.statusCode
 
-        if(responseCode == 200) {
-            val contentStream = response.entity.content
+            if(responseCode == 200) {
+                val contentStream = response.entity.content
 
-            val jsonObj = JSONObject(IOUtils.toString(contentStream,"UTF-8"))
-//            log.info(jsonObj.toString())
+                val jsonObj = JSONObject(IOUtils.toString(contentStream,"UTF-8"))
+                log.info(jsonObj.toString())
 
-            val issues = jsonObj.getJSONArray("issues")
-
-            for (i in 0..(issues.length() - 1)) {
-                val issue = issues.getJSONObject(i)
-
-                try {
-                    val component = issue.getString("component")
-                    val componentParts = component.split(":")
-                    val groupId    = componentParts[0]
-                    val artifactId = componentParts[1]
-                    val sourceFile = componentParts[2]
-
-                    val startLine = issue.getJSONObject("textRange")?.getInt("startLine")
-
-                    var status = if(issue.has("status")) issue.getString("status") else ""
-
-                    if (status == "RESOLVED" && issue.has("resolution") != null) {
-                        status = issue.getString("resolution")
-                    }
-
-                    var author = "unknown"
-                    if (issue.has("author") != null) {
-                        author = issue.getString("author")
-                    }
-
-                    val rule = issue.getString("rule").split(":")[1] //Trim the provider
-
-                    //log.info("Found ${sourceFile} at line ${startLine} with the status ${status} caused by ${author}")
-
-                    spotBugsIssues.add(SpotBugsIssue(sourceFile,
-                            if (startLine == null) -1 else startLine,
-                            groupId,
-                            artifactId,
-                            status, author, rule,
-                            "", "","")) //The last three values will be taken from spotbugs results..
+                if (nbr_pages == 0) {
+                    var total = jsonObj.getInt("total")
+                    nbr_pages = total / 500 + 1 
                 }
-                catch(e:Exception){
+                val issues = jsonObj.getJSONArray("issues")
+
+                for (i in 0..(issues.length() - 1)) {
+                    val issue = issues.getJSONObject(i)
+
+                    try {
+                        val issue_key = issue.getString("key")
+                        val component = issue.getString("component")
+                        val componentParts = component.split(":")
+                        val groupId    = componentParts[0]
+                        val artifactId = componentParts[1]
+                        val sourceFile = componentParts[2]
+
+                        val startLine = issue.getJSONObject("textRange")?.getInt("startLine")
+
+                        var status = if(issue.has("status")) issue.getString("status") else ""
+
+                        if (status == "RESOLVED" && issue.has("resolution") != null) {
+                            status = issue.getString("resolution")
+                        }
+
+                        var author = "unknown"
+                        if (issue.has("author") != null) {
+                            author = issue.getString("author")
+                        }
+
+                        val rule = issue.getString("rule").split(":")[1] //Trim the provider
+
+                        log.info("Found ${sourceFile} at line ${startLine} with the status ${status} caused by ${author}")
+
+                        spotBugsIssues.add(SpotBugsIssue(sourceFile,
+                                if (startLine == null) -1 else startLine,
+                                groupId,
+                                artifactId,
+                                status, author, rule,
+                                "", "", "",issue_key)) //The last three values will be taken from spotbugs results..
+                    }
+                    catch(e:Exception){
                     log.error("Skipping element. Error occurs while parsing ${issue}",e)
+                    }
                 }
             }
+            n++
         }
-
-
         return spotBugsIssues
     }
 
