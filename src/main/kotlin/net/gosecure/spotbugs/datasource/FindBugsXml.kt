@@ -25,7 +25,6 @@ class FindBugsXml(val log: Log) {
 
         val findbugsResults = File(sonarDir, "findbugs-result.xml")
         val classMappingFile = File(sonarDir, "class-mapping.csv")
-        val classMappingLoaded = getClassMapping(classMappingFile)
 
         if (!findbugsResults.exists()) {
             log.error("sonar/findbugs-result.xml is missing")
@@ -36,8 +35,10 @@ class FindBugsXml(val log: Log) {
             return spotBugsIssues
         }
 
-        log.info("findbugs-result.xml: ${findbugsResults.exists()}")
-        log.info("class_mapping.csv  : ${classMappingFile.exists()}")
+        val classMappingLoaded = getClassMapping(classMappingFile)
+
+        //log.info("findbugs-result.xml: ${findbugsResults.exists()}")
+        //log.info("class_mapping.csv  : ${classMappingFile.exists()}")
 
         val reader = SAXReader()
         val document = reader.read(findbugsResults)
@@ -62,10 +63,12 @@ class FindBugsXml(val log: Log) {
                 continue
             }
 
+            val fullyQualifiedMethod = getMethodFile(elem)
+
             var issue = SpotBugsIssue(sourceFile.first,
                     sourceFile.second,
                     "","","","",
-                    type, cweid , "", "","")
+                    type, cweid , "", "","", fullyQualifiedMethod)
 
             for(stringValue in elem.selectNodes("String")) { //Extra properties
                 val stringElem = stringValue as DefaultElement
@@ -84,6 +87,24 @@ class FindBugsXml(val log: Log) {
         }
 
         return spotBugsIssues
+    }
+
+    private fun getMethodFile(elem: DefaultElement): String? {
+
+        val methodNodes = elem.selectNodes("Method")
+        for(meth in methodNodes) {
+            val elem = meth as DefaultElement
+            val isPrimary = elem.attribute("primary")?.value
+            if(isPrimary == "true") {
+                val className = elem.attribute("classname")?.value!!.replace('.','/')
+                val name = elem.attribute("name")?.value
+                val signature = elem.attribute("signature")?.value
+
+                return "$className.$name$signature"
+            }
+        }
+
+        return null
     }
 
 

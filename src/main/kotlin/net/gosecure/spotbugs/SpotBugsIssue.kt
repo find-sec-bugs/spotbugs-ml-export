@@ -15,8 +15,10 @@ package net.gosecure.spotbugs
  * @param methodSink API used that is potentially
  * @param unknownSource Unknown method from which the return value is passed to a sensible API
  * @param issueKey   Key for SonarQube
- * @param hasTaintedSource It In
- * @param hashAllSources
+ * @param sourceMethod Method in witch the bug was found. ()
+ * @param hasTaintedSource One taint variable can reach the API
+ * @param hasSafeSource    One safe variable can reach the API
+ * @param hashAllSources   Hash representation of all the sources
  */
 class SpotBugsIssue(var sourceFile:String,
                     var startLine:Int,
@@ -25,11 +27,14 @@ class SpotBugsIssue(var sourceFile:String,
                     var status:String,
                     var author:String,
                     var bugType: String,
-                    var cwe:String = "",
+                    var cwe:String?,
                     var methodSink:String,
                     var unknownSource:String,
                     var issueKey:String,
-                    var hasTaintedSource:String = "",
+                    var sourceMethod:String? = null,
+                    var hasTaintedSource:Boolean? = null,
+                    var hasSafeSource:Boolean? = null,
+                    var hasUnknownSource:Boolean? = null,
                     var hashAllSources:String = "") {
 
     fun getKey():String {

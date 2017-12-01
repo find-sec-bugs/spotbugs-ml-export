@@ -47,7 +47,7 @@ class RemoteSonarSource(val log:Log, val hostUrl:String) {
                 val contentStream = response.entity.content
 
                 val jsonObj = JSONObject(IOUtils.toString(contentStream,"UTF-8"))
-                log.info(jsonObj.toString())
+                //log.info(jsonObj.toString())
 
                 if (nbr_pages == 0) {
                     var total = jsonObj.getInt("total")
@@ -75,13 +75,13 @@ class RemoteSonarSource(val log:Log, val hostUrl:String) {
                         }
 
                         var author = "unknown"
-                        if (issue.has("author") != null) {
+                        if (issue.has("author")) {
                             author = issue.getString("author")
                         }
 
                         val rule = issue.getString("rule").split(":")[1] //Trim the provider
 
-                        log.info("Found ${sourceFile} at line ${startLine} with the status ${status} caused by ${author}")
+                        //log.info("Found ${sourceFile} at line ${startLine} with the status ${status} caused by ${author}")
 
                         spotBugsIssues.add(SpotBugsIssue(sourceFile,
                                 if (startLine == null) -1 else startLine,
