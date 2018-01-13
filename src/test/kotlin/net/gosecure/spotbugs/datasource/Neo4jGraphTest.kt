@@ -38,9 +38,8 @@ class Neo4jGraphTest {
             for (line in lines) {
                 if(line.trim() == "") continue
                 if(line[0] == '-') continue
-                val functionName = line.trim().split("\\(")[0]
 
-                sinksApi.add(functionName)
+                sinksApi.add(line.trim())
             }
         }
         for(sink in sinksApi) {

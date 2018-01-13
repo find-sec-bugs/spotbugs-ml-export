@@ -23,11 +23,11 @@ class FindBugsXml(val log: Log) {
             return spotBugsIssues
         }
 
-        val findbugsResults = File(sonarDir, "findbugs-result.xml")
+        val findbugsResults = getFindBugsResultFile(buildDir)
         val classMappingFile = File(sonarDir, "class-mapping.csv")
 
         if (!findbugsResults.exists()) {
-            log.error("sonar/findbugs-result.xml is missing")
+            log.error("sonar/findbugs-result.xml or findbugsXml.xml is missing")
             return spotBugsIssues
         }
         if (!classMappingFile.exists()) {
@@ -68,7 +68,7 @@ class FindBugsXml(val log: Log) {
             var issue = SpotBugsIssue(sourceFile.first,
                     sourceFile.second,
                     "","","","",
-                    type, cweid , "", "","", fullyQualifiedMethod)
+                    type, cweid , "", -1,"","", fullyQualifiedMethod)
 
             for(stringValue in elem.selectNodes("String")) { //Extra properties
                 val stringElem = stringValue as DefaultElement
@@ -76,6 +76,10 @@ class FindBugsXml(val log: Log) {
                 if(stringElem.attribute("role")?.value == "Sink method") {
                     val methodSink = stringElem.attribute("value").value
                     issue.methodSink = methodSink
+                }
+                if(stringElem.attribute("role")?.value == "Sink parameter") {
+                    val methodSinkParam = stringElem.attribute("value").value
+                    issue.methodSinkParameter = Integer.parseInt(methodSinkParam)
                 }
                 if(stringElem.attribute("role")?.value == "Unknown source") {
                     val unknownSource = stringElem.attribute("value").value
@@ -87,6 +91,12 @@ class FindBugsXml(val log: Log) {
         }
 
         return spotBugsIssues
+    }
+
+    private fun getFindBugsResultFile(buildDir:String): File {
+        val mvnFbPluginFile    = File(buildDir, "findbugsXml.xml")
+        val mvnSonarPluginFile = File(buildDir, "sonar/findbugs-result.xml")
+        return if (mvnFbPluginFile.exists()) mvnFbPluginFile  else mvnSonarPluginFile
     }
 
     private fun getMethodFile(elem: DefaultElement): String? {

@@ -88,7 +88,7 @@ class RemoteSonarSource(val log:Log, val hostUrl:String) {
                                 groupId,
                                 artifactId,
                                 status, author, rule,
-                                "", "", "",issue_key)) //The last three values will be taken from spotbugs results..
+                                "", "", -1,"",issue_key)) //The last three values will be taken from spotbugs results..
                     }
                     catch(e:Exception){
                         log.error("Skipping element. Error occurs while parsing ${issue}",e)

@@ -48,7 +48,6 @@ class ExportMojo : AbstractMojo() {
 
         if(sonarIssuesLookupTable.size > 0) {
 
-
             log.info("Found ${spotBugsIssues.size} SpotBugs issues")
 
 
@@ -59,6 +58,7 @@ class ExportMojo : AbstractMojo() {
                 if (existingIssue != null) {
                     existingIssue.cwe = sbIssue.cwe
                     existingIssue.methodSink = sbIssue.methodSink
+                    existingIssue.methodSinkParameter = sbIssue.methodSinkParameter
                     existingIssue.unknownSource = sbIssue.unknownSource
                     existingIssue.sourceMethod = sbIssue.sourceMethod
 
@@ -85,17 +85,44 @@ class ExportMojo : AbstractMojo() {
             val db = GraphDatabaseFactory().newEmbeddedDatabase(fileGraph)
             try {
                 val graphDb = Neo4jGraph(db)
+                val totalIssue = exportedIssues.size
+                val issueIndex = 0
                 for (issue in exportedIssues) {
+
                     if (issue.methodSink != "") {
-                        var nodesTainted = graphDb.searchTaintSource(issue.methodSink, issue.sourceMethod,"TAINTED")
-                        issue.hasTaintedSource = nodesTainted.isNotEmpty()
+                        val start = System.currentTimeMillis()
 
-                        var nodesSafe = graphDb.searchTaintSource(issue.methodSink, issue.sourceMethod,"SAFE")
-                        issue.hasSafeSource = nodesSafe.isNotEmpty()
+                        issue.hasTaintedSource = false
+                        issue.hasSafeSource = false
+                        issue.hasUnknownSource = false
 
-                        var nodesUnknown = graphDb.searchTaintSource(issue.methodSink, issue.sourceMethod,"UNKNOWN")
-                        issue.hasUnknownSource = nodesUnknown.isNotEmpty()
+                        if(issue.sourceMethod == null) {
+                            log.warn("Unable to ")
+                            continue
+                        }
+                        var nodes = graphDb.searchSource(issue.methodSink + "_p" + issue.methodSinkParameter, issue.sourceMethod!!)
+                        for (n in nodes) {
+                            when(n.state) {
+                                "SAFE" -> {
+                                    issue.hasSafeSource = true
+                                }
+                                "TAINTED" -> {
+                                    issue.hasTaintedSource = true
+                                }
+                                "UNKNOWN" -> {
+                                    issue.hasUnknownSource = true
+                                }
+                                else -> {
+                                    log.warn("Unknown state : ${n.state}")
+                                }
+                            }
+                        }
+
+
+                        val end = System.currentTimeMillis()
+                        println("Query executed ${end-start} ms (Tainted ${issue.hasTaintedSource}, Safe ${issue.hasSafeSource }, Unknown ${issue.hasUnknownSource})")
                     }
+                    println(issueIndex / totalIssue)
                 }
             }
             finally {
@@ -121,7 +148,7 @@ class ExportMojo : AbstractMojo() {
             aggregateResults.createNewFile()
 
             val writer = aggregateResults.printWriter()
-            writer.println("Source File,Line Number,Group Id,Artifact Id,Author,Bug Type,CWE,Method Sink,Unknown Source,Status,Has Tainted Source,Has Safe Source,Key")
+            writer.println("SourceFile,LineNumber,GroupId,ArtifactId,Author,BugType,CWE,MethodSink,UnknownSource,SourceMethod,HasTainted Source,HasSafeSource,HasUnknownSource,Status,Key")
             for(finalIssue in exportedIssues) {
 //                    var finalIssue = entry.value
                 writer.println("${finalIssue.sourceFile},${finalIssue.startLine}," +
@@ -129,8 +156,9 @@ class ExportMojo : AbstractMojo() {
                         "${finalIssue.author},${finalIssue.bugType},"+
                         "${finalIssue.cwe}," +
                         "${finalIssue.methodSink},${finalIssue.unknownSource}," +
+                        "${finalIssue.sourceMethod},"+
+                        "${finalIssue.hasTaintedSource?:""},${finalIssue.hasSafeSource?:""},${finalIssue.hasUnknownSource?:""}," +
                         "${finalIssue.status}," +
-                        "${finalIssue.hasTaintedSource},${finalIssue.hasSafeSource}," +
                         "${finalIssue.issueKey}")
             }
 
@@ -140,6 +168,8 @@ class ExportMojo : AbstractMojo() {
 
 
     }
+
+    fun emptyIfNull(value:String?):String = value ?: ""
 
     /**
      * Look at parent directory to find the graph present at the root directory.
