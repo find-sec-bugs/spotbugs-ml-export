@@ -15,8 +15,9 @@ class Neo4jGraph(val graphDb:GraphDatabaseService) {
             var execResult = queryGraph("""
 MATCH (source:Variable)-[r1:TRANSFER*0..5]->(node:Variable)-[r:TRANSFER]->(sink:Variable)
 WHERE
+  source.state IN ["UNKNOWN", "SAFE", "TAINTED"] AND
   sink.name = ${"$"}methodApi AND
-  r.source = ${"$"}source
+  node.source = ${"$"}source
 RETURN source,sink,r1,node,r;
 """.trim(), hashMapOf("methodApi" to methodApi, "source" to source), graphDb)
 

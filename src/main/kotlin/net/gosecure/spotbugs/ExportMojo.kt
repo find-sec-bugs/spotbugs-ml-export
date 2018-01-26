@@ -15,7 +15,7 @@ import java.io.IOException
 class ExportMojo : AbstractMojo() {
 
     @Parameter(readonly = true, defaultValue = "\${project}")
-    private val project: MavenProject? = null
+    private lateinit var project: MavenProject
 
     fun Double.format(digits: Int) = java.lang.String.format("%.${digits}f", this)
 
@@ -28,9 +28,9 @@ class ExportMojo : AbstractMojo() {
 
         //Sonar Export
 
-        var sonarIssues:List<SpotBugsIssue> = ArrayList()
+        var sonarIssues:List<SpotBugsIssue> = mutableListOf()
         try {
-            sonarIssues = RemoteSonarSource(log, "http://localhost:9000").getSonarIssues(project!!)
+            sonarIssues = RemoteSonarSource(log, "http://localhost:9000").getSonarIssues(project)
             log.info("Found ${sonarIssues.size} Sonar issues")
         }
         catch (ioe: IOException){
@@ -44,7 +44,7 @@ class ExportMojo : AbstractMojo() {
 
         //SpotBugs
 
-        var spotBugsIssues = FindBugsXml(log).getSpotBugsIssues(project!!)
+        var spotBugsIssues = FindBugsXml(log).getSpotBugsIssues(project)
 
         if(sonarIssuesLookupTable.size > 0) {
 
@@ -73,7 +73,7 @@ class ExportMojo : AbstractMojo() {
         }
 
 
-        val buildDirectory = project!!.build.directory
+        val buildDirectory = project.build.directory
 
         //Integrating Neo4j metadata
         val fileGraph = getGraphFile(buildDirectory)
@@ -86,9 +86,9 @@ class ExportMojo : AbstractMojo() {
             try {
                 val graphDb = Neo4jGraph(db)
                 val totalIssue = exportedIssues.size
-                val issueIndex = 0
+                var issueIndex = 0
                 for (issue in exportedIssues) {
-
+                    issueIndex++
                     if (issue.methodSink != "") {
                         val start = System.currentTimeMillis()
 
@@ -97,7 +97,7 @@ class ExportMojo : AbstractMojo() {
                         issue.hasUnknownSource = false
 
                         if(issue.sourceMethod == null) {
-                            log.warn("Unable to ")
+                            log.warn("No source method defined for the entry : $issue")
                             continue
                         }
                         var nodes = graphDb.searchSource(issue.methodSink + "_p" + issue.methodSinkParameter, issue.sourceMethod!!)
@@ -120,9 +120,9 @@ class ExportMojo : AbstractMojo() {
 
 
                         val end = System.currentTimeMillis()
-                        println("Query executed ${end-start} ms (Tainted ${issue.hasTaintedSource}, Safe ${issue.hasSafeSource }, Unknown ${issue.hasUnknownSource})")
+                        log.info("Query executed ${end-start} ms (Tainted ${issue.hasTaintedSource}, Safe ${issue.hasSafeSource }, Unknown ${issue.hasUnknownSource})")
                     }
-                    println(issueIndex / totalIssue)
+                    log.info("Issue %d - Progress %.2f %%".format(issueIndex, issueIndex * 100.0 / totalIssue))
                 }
             }
             finally {
@@ -141,8 +141,8 @@ class ExportMojo : AbstractMojo() {
                 log.warn(msg)
             }
 
-            val buildDir = project!!.build.directory
-            val sonarDir = File(buildDir, "sonar")
+            val buildDir = project.build.directory
+            val sonarDir = File(buildDir, "spotbugs-ml")
             val aggregateResults = File(sonarDir, "aggregate-results.csv")
 
             aggregateResults.createNewFile()
