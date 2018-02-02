@@ -1,0 +1,999 @@
+<BugCollection analysisTimestamp="1513715617382" release="" sequence="0" timestamp="1511291005012" version="3.0.1">
+    <Project projectName="Struts 2 Core">
+        <Jar>C:\Code\samples\struts\core\target\classes</Jar>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\codehaus\mojo\findbugs-maven-plugin\3.0.1\findbugs-maven-plugin-3.0.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\com\google\code\findbugs\findbugs\3.0.1\findbugs-3.0.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\net\jcip\jcip-annotations\1.0\jcip-annotations-1.0.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\com\google\code\findbugs\jsr305\2.0.1\jsr305-2.0.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\com\google\code\findbugs\bcel-findbugs\6.0\bcel-findbugs-6.0.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\com\google\code\findbugs\jFormatString\2.0.1\jFormatString-2.0.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\dom4j\dom4j\1.6.1\dom4j-1.6.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\xml-apis\xml-apis\1.0.b2\xml-apis-1.0.b2.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\ow2\asm\asm-debug-all\5.0.2\asm-debug-all-5.0.2.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\ow2\asm\asm-commons\5.0.2\asm-commons-5.0.2.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\ow2\asm\asm-tree\5.0.2\asm-tree-5.0.2.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\ow2\asm\asm\5.0.2\asm-5.0.2.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\commons-lang\commons-lang\2.6\commons-lang-2.6.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\com\apple\AppleJavaExtensions\1.4\AppleJavaExtensions-1.4.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\jaxen\jaxen\1.1.6\jaxen-1.1.6.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\codehaus\gmavenplus\gmavenplus-plugin\1.3\gmavenplus-plugin-1.3.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\maven-project\2.2.1\maven-project-2.2.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\maven-settings\2.2.1\maven-settings-2.2.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\maven-profile\2.2.1\maven-profile-2.2.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\codehaus\plexus\plexus-interpolation\1.11\plexus-interpolation-1.11.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\maven-core\2.2.1\maven-core-2.2.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\maven-plugin-parameter-documenter\2.2.1\maven-plugin-parameter-documenter-2.2.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\slf4j\slf4j-jdk14\1.5.6\slf4j-jdk14-1.5.6.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\slf4j\slf4j-api\1.5.6\slf4j-api-1.5.6.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\slf4j\jcl-over-slf4j\1.5.6\jcl-over-slf4j-1.5.6.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\maven-repository-metadata\2.2.1\maven-repository-metadata-2.2.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\maven-error-diagnostics\2.2.1\maven-error-diagnostics-2.2.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\commons-cli\commons-cli\1.2\commons-cli-1.2.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\codehaus\plexus\plexus-interactivity-api\1.0-alpha-4\plexus-interactivity-api-1.0-alpha-4.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\maven-monitor\2.2.1\maven-monitor-2.2.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\sonatype\plexus\plexus-sec-dispatcher\1.3\plexus-sec-dispatcher-1.3.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\sonatype\plexus\plexus-cipher\1.4\plexus-cipher-1.4.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\shared\file-management\1.2.1\file-management-1.2.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\shared\maven-shared-io\1.1\maven-shared-io-1.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\wagon\wagon-provider-api\1.0-alpha-6\wagon-provider-api-1.0-alpha-6.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\codehaus\plexus\plexus-classworlds\2.5.2\plexus-classworlds-2.5.2.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\maven-plugin-registry\2.2.1\maven-plugin-registry-2.2.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\fusesource\jansi\jansi\1.11\jansi-1.11.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\jline\jline\2.12\jline-2.12.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\ant\ant\1.9.4\ant-1.9.4.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\ant\ant-launcher\1.9.4\ant-launcher-1.9.4.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\ivy\ivy\2.4.0\ivy-2.4.0.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\codehaus\groovy\groovy-all\2.4.0\groovy-all-2.4.0.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\reporting\maven-reporting-impl\2.1\maven-reporting-impl-2.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\commons-validator\commons-validator\1.2.0\commons-validator-1.2.0.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\commons-beanutils\commons-beanutils\1.7.0\commons-beanutils-1.7.0.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\commons-digester\commons-digester\1.6\commons-digester-1.6.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\commons-logging\commons-logging\1.0.4\commons-logging-1.0.4.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\oro\oro\2.0.8\oro-2.0.8.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\reporting\maven-reporting-api\3.0\maven-reporting-api-3.0.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\maven-plugin-api\2.0\maven-plugin-api-2.0.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\maven-plugin-descriptor\2.2.1\maven-plugin-descriptor-2.2.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\maven-artifact\2.2.1\maven-artifact-2.2.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\doxia\doxia-core\1.4\doxia-core-1.4.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\doxia\doxia-logging-api\1.4\doxia-logging-api-1.4.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\codehaus\plexus\plexus-component-annotations\1.5.5\plexus-component-annotations-1.5.5.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\xerces\xercesImpl\2.9.1\xercesImpl-2.9.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\httpcomponents\httpclient\4.0.2\httpclient-4.0.2.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\commons-codec\commons-codec\1.3\commons-codec-1.3.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\httpcomponents\httpcore\4.0.1\httpcore-4.0.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\doxia\doxia-sink-api\1.4\doxia-sink-api-1.4.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\doxia\doxia-decoration-model\1.4\doxia-decoration-model-1.4.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\doxia\doxia-site-renderer\1.4\doxia-site-renderer-1.4.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\doxia\doxia-module-xhtml\1.4\doxia-module-xhtml-1.4.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\doxia\doxia-module-fml\1.4\doxia-module-fml-1.4.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\codehaus\plexus\plexus-i18n\1.0-beta-7\plexus-i18n-1.0-beta-7.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\codehaus\plexus\plexus-velocity\1.1.7\plexus-velocity-1.1.7.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\velocity\velocity\1.5\velocity-1.5.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\velocity\velocity-tools\2.0\velocity-tools-2.0.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\commons-chain\commons-chain\1.1\commons-chain-1.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\sslext\sslext\1.2-0\sslext-1.2-0.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\struts\struts-core\1.3.8\struts-core-1.3.8.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\antlr\antlr\2.7.2\antlr-2.7.2.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\struts\struts-taglib\1.3.8\struts-taglib-1.3.8.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\struts\struts-tiles\1.3.8\struts-tiles-1.3.8.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\commons-collections\commons-collections\3.2.1\commons-collections-3.2.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\shared\maven-doxia-tools\1.2.1\maven-doxia-tools-1.2.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\commons-io\commons-io\1.4\commons-io-1.4.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\maven-artifact-manager\2.0.6\maven-artifact-manager-2.0.6.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\maven\maven-model\2.0.6\maven-model-2.0.6.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\codehaus\plexus\plexus-container-default\1.0-alpha-9\plexus-container-default-1.0-alpha-9.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\classworlds\classworlds\1.1-alpha-2\classworlds-1.1-alpha-2.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\codehaus\plexus\plexus-resources\1.0-alpha-7\plexus-resources-1.0-alpha-7.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\codehaus\plexus\plexus-utils\1.5.6\plexus-utils-1.5.6.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\sonatype\plexus\plexus-build-api\0.0.7\plexus-build-api-0.0.7.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\freemarker\freemarker\2.3.26-incubating\freemarker-2.3.26-incubating.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\javax\servlet\servlet-api\2.4\servlet-api-2.4.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\javax\servlet\jsp-api\2.0\jsp-api-2.0.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\ognl\ognl\3.1.15\ognl-3.1.15.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\javassist\javassist\3.20.0-GA\javassist-3.20.0-GA.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\velocity\velocity\1.7\velocity-1.7.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\commons-collections\commons-collections\3.2.2\commons-collections-3.2.2.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\commons-lang\commons-lang\2.4\commons-lang-2.4.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\commons-beanutils\commons-beanutils\1.9.2\commons-beanutils-1.9.2.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\commons-digester\commons-digester\2.1\commons-digester-2.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\dom4j\dom4j\1.1\dom4j-1.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\logging\log4j\log4j-api\2.9.1\log4j-api-2.9.1.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\commons-fileupload\commons-fileupload\1.3.3\commons-fileupload-1.3.3.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\commons-io\commons-io\2.5\commons-io-2.5.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\commons-logging\commons-logging\1.1.3\commons-logging-1.1.3.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\commons\commons-lang3\3.6\commons-lang3-3.6.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\springframework\spring-core\4.1.9.RELEASE\spring-core-4.1.9.RELEASE.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\springframework\spring-aop\4.1.9.RELEASE\spring-aop-4.1.9.RELEASE.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\aopalliance\aopalliance\1.0\aopalliance-1.0.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\springframework\spring-aspects\4.1.9.RELEASE\spring-aspects-4.1.9.RELEASE.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\aspectj\aspectjweaver\1.8.7\aspectjweaver-1.8.7.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\springframework\spring-beans\4.1.9.RELEASE\spring-beans-4.1.9.RELEASE.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\springframework\spring-context\4.1.9.RELEASE\spring-context-4.1.9.RELEASE.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\springframework\spring-expression\4.1.9.RELEASE\spring-expression-4.1.9.RELEASE.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\springframework\spring-context-support\4.1.9.RELEASE\spring-context-support-4.1.9.RELEASE.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\springframework\spring-web\4.1.9.RELEASE\spring-web-4.1.9.RELEASE.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\cglib\cglib-nodep\2.1_3\cglib-nodep-2.1_3.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\junit\junit\4.12\junit-4.12.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\apache\struts\struts-annotations\1.0.6\struts-annotations-1.0.6.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\testng\testng\5.14.10\testng-5.14.10.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\beanshell\bsh\2.0b4\bsh-2.0b4.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\com\beust\jcommander\1.12\jcommander-1.12.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\yaml\snakeyaml\1.6\snakeyaml-1.6.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\slf4j\slf4j-api\1.7.12\slf4j-api-1.7.12.jar</AuxClasspathEntry>
+        <AuxClasspathEntry>C:\Users\testuser\.m2\repository\org\slf4j\slf4j-simple\1.7.12\slf4j-simple-1.7.12.jar</AuxClasspathEntry>
+        <Plugin enabled="true" id="com.h3xstream.findsecbugs"/>
+        <SrcDir>C:\Code\samples\struts\core\src\main\java</SrcDir>
+        <WrkDir>C:\Code\samples\struts\core\target</WrkDir>
+    </Project>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="57ff5211b4321afa80ef524d85784c30" instanceOccurrenceMax="2" instanceOccurrenceNum="0" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.ActionChainResult" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" end="290" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java" start="86">
+                <Message>At ActionChainResult.java:[lines 86-290]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.ActionChainResult</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.ActionChainResult" isStatic="false" name="execute" primary="true" signature="(Lcom/opensymphony/xwork2/ActionInvocation;)V">
+            <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" end="235" endBytecode="502" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java" start="205" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.ActionChainResult.execute(ActionInvocation)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" end="210" endBytecode="34" primary="true" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java" start="210" startBytecode="34">
+            <Message>At ActionChainResult.java:[line 210]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/util/TextParseUtil.translateVariables(Ljava/lang/String;Lcom/opensymphony/xwork2/util/ValueStack;)Ljava/lang/String;">
+            <Message>Sink method com/opensymphony/xwork2/util/TextParseUtil.translateVariables(Ljava/lang/String;Lcom/opensymphony/xwork2/util/ValueStack;)Ljava/lang/String;</Message>
+        </String>
+        <String role="Sink parameter" value="1">
+            <Message>Sink parameter 1</Message>
+        </String>
+        <String role="Unknown source" value="Oups!!">
+            <Message>Unknown source Oups!!</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" end="210" endBytecode="30" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java" start="210" startBytecode="30">
+            <Message>At ActionChainResult.java:[line 210]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="57ff5211b4321afa80ef524d85784c30" instanceOccurrenceMax="2" instanceOccurrenceNum="1" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.ActionChainResult" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" end="290" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java" start="86">
+                <Message>At ActionChainResult.java:[lines 86-290]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.ActionChainResult</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.ActionChainResult" isStatic="false" name="execute" primary="true" signature="(Lcom/opensymphony/xwork2/ActionInvocation;)V">
+            <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" end="235" endBytecode="502" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java" start="205" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.ActionChainResult.execute(ActionInvocation)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" end="211" endBytecode="43" primary="true" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java" start="211" startBytecode="43">
+            <Message>At ActionChainResult.java:[line 211]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/util/TextParseUtil.translateVariables(Ljava/lang/String;Lcom/opensymphony/xwork2/util/ValueStack;)Ljava/lang/String;">
+            <Message>Sink method com/opensymphony/xwork2/util/TextParseUtil.translateVariables(Ljava/lang/String;Lcom/opensymphony/xwork2/util/ValueStack;)Ljava/lang/String;</Message>
+        </String>
+        <String role="Sink parameter" value="1">
+            <Message>Sink parameter 1</Message>
+        </String>
+        <String role="Unknown source" value="Oups!!">
+            <Message>Unknown source Oups!!</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" end="211" endBytecode="39" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java" start="211" startBytecode="39">
+            <Message>At ActionChainResult.java:[line 211]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="57ff5211b4321afa80ef524d85784c30" instanceOccurrenceMax="2" instanceOccurrenceNum="2" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.ActionChainResult" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" end="290" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java" start="86">
+                <Message>At ActionChainResult.java:[lines 86-290]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.ActionChainResult</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.ActionChainResult" isStatic="false" name="execute" primary="true" signature="(Lcom/opensymphony/xwork2/ActionInvocation;)V">
+            <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" end="235" endBytecode="502" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java" start="205" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.ActionChainResult.execute(ActionInvocation)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" end="213" endBytecode="60" primary="true" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java" start="213" startBytecode="60">
+            <Message>At ActionChainResult.java:[line 213]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/util/TextParseUtil.translateVariables(Ljava/lang/String;Lcom/opensymphony/xwork2/util/ValueStack;)Ljava/lang/String;">
+            <Message>Sink method com/opensymphony/xwork2/util/TextParseUtil.translateVariables(Ljava/lang/String;Lcom/opensymphony/xwork2/util/ValueStack;)Ljava/lang/String;</Message>
+        </String>
+        <String role="Sink parameter" value="1">
+            <Message>Sink parameter 1</Message>
+        </String>
+        <String role="Unknown source" value="Oups!!">
+            <Message>Unknown source Oups!!</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" end="212" endBytecode="56" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java" start="212" startBytecode="56">
+            <Message>At ActionChainResult.java:[line 212]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="1be18ee98ecfa0523c91eb0655cc232f" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.ActionChainResult" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" end="290" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java" start="86">
+                <Message>At ActionChainResult.java:[lines 86-290]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.ActionChainResult</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.ActionChainResult" isStatic="false" name="isInChainHistory" primary="true" signature="(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z">
+            <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" end="276" endBytecode="296" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java" start="259" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.ActionChainResult.isInChainHistory(String, String, String)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" end="268" endBytecode="52" primary="true" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java" start="268" startBytecode="52">
+            <Message>At ActionChainResult.java:[line 268]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/util/TextParseUtil.translateVariables(Ljava/lang/String;Lcom/opensymphony/xwork2/util/ValueStack;)Ljava/lang/String;">
+            <Message>Sink method com/opensymphony/xwork2/util/TextParseUtil.translateVariables(Ljava/lang/String;Lcom/opensymphony/xwork2/util/ValueStack;)Ljava/lang/String;</Message>
+        </String>
+        <String role="Sink parameter" value="1">
+            <Message>Sink parameter 1</Message>
+        </String>
+        <String role="Unknown source" value="Oups!!">
+            <Message>Unknown source Oups!!</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.ActionChainResult" end="268" endBytecode="47" sourcefile="ActionChainResult.java" sourcepath="com/opensymphony/xwork2/ActionChainResult.java" start="268" startBytecode="47">
+            <Message>At ActionChainResult.java:[line 268]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="fd360678f82ed6f20b763cd1c856159d" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.ActionSupport" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.ActionSupport" end="325" sourcefile="ActionSupport.java" sourcepath="com/opensymphony/xwork2/ActionSupport.java" start="36">
+                <Message>At ActionSupport.java:[lines 36-325]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.ActionSupport</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.ActionSupport" isStatic="false" name="getFormatted" primary="true" signature="(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;">
+            <SourceLine classname="com.opensymphony.xwork2.ActionSupport" end="141" endBytecode="230" sourcefile="ActionSupport.java" sourcepath="com/opensymphony/xwork2/ActionSupport.java" start="134" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.ActionSupport.getFormatted(String, String)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.ActionSupport" end="140" endBytecode="48" primary="true" sourcefile="ActionSupport.java" sourcepath="com/opensymphony/xwork2/ActionSupport.java" start="140" startBytecode="48">
+            <Message>At ActionSupport.java:[line 140]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/util/ValueStack.findValue(Ljava/lang/String;)Ljava/lang/Object;">
+            <Message>Sink method com/opensymphony/xwork2/util/ValueStack.findValue(Ljava/lang/String;)Ljava/lang/Object;</Message>
+        </String>
+        <String role="Sink parameter" value="0">
+            <Message>Sink parameter 0</Message>
+        </String>
+        <String role="Method usage" value="not detected">
+            <Message>Method usage not detected</Message>
+        </String>
+    </BugInstance>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="b14f60ab2e28036556395a666f4bd22a" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.DefaultActionInvocation" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.DefaultActionInvocation" end="523" sourcefile="DefaultActionInvocation.java" sourcepath="com/opensymphony/xwork2/DefaultActionInvocation.java" start="54">
+                <Message>At DefaultActionInvocation.java:[lines 54-523]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.DefaultActionInvocation</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.DefaultActionInvocation" isStatic="false" name="invokeAction" primary="true" signature="(Ljava/lang/Object;Lcom/opensymphony/xwork2/config/entities/ActionConfig;)Ljava/lang/String;">
+            <SourceLine classname="com.opensymphony.xwork2.DefaultActionInvocation" end="481" endBytecode="874" sourcefile="DefaultActionInvocation.java" sourcepath="com/opensymphony/xwork2/DefaultActionInvocation.java" start="428" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.DefaultActionInvocation.invokeAction(Object, ActionConfig)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.DefaultActionInvocation" end="438" endBytecode="88" primary="true" sourcefile="DefaultActionInvocation.java" sourcepath="com/opensymphony/xwork2/DefaultActionInvocation.java" start="438" startBytecode="88">
+            <Message>At DefaultActionInvocation.java:[line 438]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/ognl/OgnlUtil.callMethod(Ljava/lang/String;Ljava/util/Map;Ljava/lang/Object;)Ljava/lang/Object;">
+            <Message>Sink method com/opensymphony/xwork2/ognl/OgnlUtil.callMethod(Ljava/lang/String;Ljava/util/Map;Ljava/lang/Object;)Ljava/lang/Object;</Message>
+        </String>
+        <String role="Sink parameter" value="2">
+            <Message>Sink parameter 2</Message>
+        </String>
+        <String role="Unknown source" value="java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;">
+            <Message>Unknown source java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;</Message>
+        </String>
+        <String role="Unknown source" value="java/lang/StringBuilder.toString()Ljava/lang/String;">
+            <Message>Unknown source java/lang/StringBuilder.toString()Ljava/lang/String;</Message>
+        </String>
+        <String role="Unknown source" value="com/opensymphony/xwork2/ActionProxy.getMethod()Ljava/lang/String;">
+            <Message>Unknown source com/opensymphony/xwork2/ActionProxy.getMethod()Ljava/lang/String;</Message>
+        </String>
+        <String role="Unknown source" value="org/apache/logging/log4j/Logger.debug(Ljava/lang/String;Ljava/lang/Object;)V">
+            <Message>Unknown source org/apache/logging/log4j/Logger.debug(Ljava/lang/String;Ljava/lang/Object;)V</Message>
+        </String>
+        <String role="Unknown source" value="java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;">
+            <Message>Unknown source java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.DefaultActionInvocation" end="428" endBytecode="4" sourcefile="DefaultActionInvocation.java" sourcepath="com/opensymphony/xwork2/DefaultActionInvocation.java" start="428" startBytecode="4">
+            <Message>At DefaultActionInvocation.java:[line 428]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.DefaultActionInvocation" end="430" endBytecode="16" sourcefile="DefaultActionInvocation.java" sourcepath="com/opensymphony/xwork2/DefaultActionInvocation.java" start="430" startBytecode="16">
+            <Message>At DefaultActionInvocation.java:[line 430]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.DefaultActionInvocation" end="438" endBytecode="72" sourcefile="DefaultActionInvocation.java" sourcepath="com/opensymphony/xwork2/DefaultActionInvocation.java" start="438" startBytecode="72">
+            <Message>At DefaultActionInvocation.java:[line 438]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECSSSRFUC" category="SECURITY" cweid="918" instanceHash="5473768fe66f4edc3e93703e94212c37" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="2" rank="12" type="URLCONNECTION_SSRF_FD">
+        <ShortMessage>URLConnection Server-Side Request Forgery (SSRF) and File Disclosure</ShortMessage>
+        <LongMessage>This web server request could be used by an attacker to expose internal services and filesystem.</LongMessage>
+        <Class classname="com.opensymphony.xwork2.conversion.impl.DefaultConversionPropertiesProcessor" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultConversionPropertiesProcessor" end="101" sourcefile="DefaultConversionPropertiesProcessor.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultConversionPropertiesProcessor.java" start="37">
+                <Message>At DefaultConversionPropertiesProcessor.java:[lines 37-101]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.conversion.impl.DefaultConversionPropertiesProcessor</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.conversion.impl.DefaultConversionPropertiesProcessor" isStatic="false" name="loadConversionProperties" primary="true" signature="(Ljava/lang/String;Z)V">
+            <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultConversionPropertiesProcessor" end="101" endBytecode="649" sourcefile="DefaultConversionPropertiesProcessor.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultConversionPropertiesProcessor.java" start="71" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.conversion.impl.DefaultConversionPropertiesProcessor.loadConversionProperties(String, boolean)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultConversionPropertiesProcessor" end="75" endBytecode="43" primary="true" sourcefile="DefaultConversionPropertiesProcessor.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultConversionPropertiesProcessor.java" start="75" startBytecode="43">
+            <Message>At DefaultConversionPropertiesProcessor.java:[line 75]</Message>
+        </SourceLine>
+        <String role="Sink method" value="java/net/URL.openStream()Ljava/io/InputStream;">
+            <Message>Sink method java/net/URL.openStream()Ljava/io/InputStream;</Message>
+        </String>
+        <String role="Sink parameter" value="0">
+            <Message>Sink parameter 0</Message>
+        </String>
+        <String role="Unknown source" value="java/util/Iterator.next()Ljava/lang/Object;">
+            <Message>Unknown source java/util/Iterator.next()Ljava/lang/Object;</Message>
+        </String>
+        <String role="Unknown source" value="com/opensymphony/xwork2/util/ClassLoaderUtil.getResources(Ljava/lang/String;Ljava/lang/Class;Z)Ljava/util/Iterator;">
+            <Message>Unknown source com/opensymphony/xwork2/util/ClassLoaderUtil.getResources(Ljava/lang/String;Ljava/lang/Class;Z)Ljava/util/Iterator;</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultConversionPropertiesProcessor" end="71" endBytecode="6" sourcefile="DefaultConversionPropertiesProcessor.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultConversionPropertiesProcessor.java" start="71" startBytecode="6">
+            <Message>At DefaultConversionPropertiesProcessor.java:[line 71]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultConversionPropertiesProcessor" end="73" endBytecode="20" sourcefile="DefaultConversionPropertiesProcessor.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultConversionPropertiesProcessor.java" start="73" startBytecode="20">
+            <Message>At DefaultConversionPropertiesProcessor.java:[line 73]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="95f72231a21cd769fe1cb8550b3a16f8" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="295" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="59">
+                <Message>At DefaultObjectTypeDeterminer.java:[lines 59-295]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" isStatic="false" name="getAnnotation" primary="true" signature="(Ljava/lang/Class;Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/annotation/Annotation;">
+            <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="202" endBytecode="230" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="189" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer.getAnnotation(Class, String, Class)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="190" endBytecode="9" primary="true" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="190" startBytecode="9">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 190]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/util/reflection/ReflectionProvider.getField(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Field;">
+            <Message>Sink method com/opensymphony/xwork2/util/reflection/ReflectionProvider.getField(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Field;</Message>
+        </String>
+        <String role="Sink parameter" value="0">
+            <Message>Sink parameter 0</Message>
+        </String>
+        <String role="Method usage" value="not detected">
+            <Message>Method usage not detected</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="88" endBytecode="5" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="88" startBytecode="5">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 88]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="112" endBytecode="5" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="112" startBytecode="5">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 112]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="141" endBytecode="5" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="141" startBytecode="5">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 141]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="163" endBytecode="5" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="163" startBytecode="5">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 163]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="719ae20ecc87d67add40e16ae67a9ade" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="295" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="59">
+                <Message>At DefaultObjectTypeDeterminer.java:[lines 59-295]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" isStatic="false" name="getAnnotationFromGetter" primary="true" signature="(Ljava/lang/Class;Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/annotation/Annotation;">
+            <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="223" endBytecode="181" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="215" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer.getAnnotationFromGetter(Class, String, Class)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="215" endBytecode="6" primary="true" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="215" startBytecode="6">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 215]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/util/reflection/ReflectionProvider.getGetMethod(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Method;">
+            <Message>Sink method com/opensymphony/xwork2/util/reflection/ReflectionProvider.getGetMethod(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Method;</Message>
+        </String>
+        <String role="Sink parameter" value="0">
+            <Message>Sink parameter 0</Message>
+        </String>
+        <String role="Method usage" value="not detected">
+            <Message>Method usage not detected</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="88" endBytecode="5" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="88" startBytecode="5">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 88]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="112" endBytecode="5" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="112" startBytecode="5">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 112]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="141" endBytecode="5" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="141" startBytecode="5">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 141]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="163" endBytecode="5" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="163" startBytecode="5">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 163]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="199" endBytecode="52" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="199" startBytecode="52">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 199]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="90c47653866e5ab712ef140e08aa27c3" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="295" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="59">
+                <Message>At DefaultObjectTypeDeterminer.java:[lines 59-295]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" isStatic="false" name="getAnnotationFromSetter" primary="true" signature="(Ljava/lang/Class;Ljava/lang/String;Ljava/lang/Class;)Ljava/lang/annotation/Annotation;">
+            <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="244" endBytecode="181" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="236" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer.getAnnotationFromSetter(Class, String, Class)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="236" endBytecode="6" primary="true" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="236" startBytecode="6">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 236]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/util/reflection/ReflectionProvider.getSetMethod(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Method;">
+            <Message>Sink method com/opensymphony/xwork2/util/reflection/ReflectionProvider.getSetMethod(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Method;</Message>
+        </String>
+        <String role="Sink parameter" value="0">
+            <Message>Sink parameter 0</Message>
+        </String>
+        <String role="Method usage" value="not detected">
+            <Message>Method usage not detected</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="88" endBytecode="5" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="88" startBytecode="5">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 88]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="112" endBytecode="5" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="112" startBytecode="5">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 112]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="141" endBytecode="5" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="141" startBytecode="5">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 141]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="163" endBytecode="5" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="163" startBytecode="5">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 163]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="196" endBytecode="38" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="196" startBytecode="38">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 196]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="99b204933d0ae8bb4b4a553a43124812" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="295" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="59">
+                <Message>At DefaultObjectTypeDeterminer.java:[lines 59-295]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" isStatic="false" name="getClass" primary="true" signature="(Ljava/lang/Class;Ljava/lang/String;Z)Ljava/lang/Class;">
+            <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="295" endBytecode="615" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="257" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer.getClass(Class, String, boolean)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="257" endBytecode="6" primary="true" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="257" startBytecode="6">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 257]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/util/reflection/ReflectionProvider.getField(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Field;">
+            <Message>Sink method com/opensymphony/xwork2/util/reflection/ReflectionProvider.getField(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Field;</Message>
+        </String>
+        <String role="Sink parameter" value="0">
+            <Message>Sink parameter 0</Message>
+        </String>
+        <String role="Method usage" value="not detected">
+            <Message>Method usage not detected</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="92" endBytecode="27" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="92" startBytecode="27">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 92]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="116" endBytecode="30" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="116" startBytecode="30">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 116]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="136635bbfca9dadd987f8d96dd30793a" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="295" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="59">
+                <Message>At DefaultObjectTypeDeterminer.java:[lines 59-295]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" isStatic="false" name="getClass" primary="true" signature="(Ljava/lang/Class;Ljava/lang/String;Z)Ljava/lang/Class;">
+            <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="295" endBytecode="615" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="257" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer.getClass(Class, String, boolean)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="266" endBytecode="47" primary="true" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="266" startBytecode="47">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 266]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/util/reflection/ReflectionProvider.getSetMethod(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Method;">
+            <Message>Sink method com/opensymphony/xwork2/util/reflection/ReflectionProvider.getSetMethod(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Method;</Message>
+        </String>
+        <String role="Sink parameter" value="0">
+            <Message>Sink parameter 0</Message>
+        </String>
+        <String role="Method usage" value="not detected">
+            <Message>Method usage not detected</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="92" endBytecode="27" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="92" startBytecode="27">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 92]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="116" endBytecode="30" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="116" startBytecode="30">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 116]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="16a2e705540958dae2a59bd73fcb8ef0" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="295" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="59">
+                <Message>At DefaultObjectTypeDeterminer.java:[lines 59-295]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" isStatic="false" name="getClass" primary="true" signature="(Ljava/lang/Class;Ljava/lang/String;Z)Ljava/lang/Class;">
+            <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="295" endBytecode="615" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="257" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer.getClass(Class, String, boolean)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="276" endBytecode="96" primary="true" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="276" startBytecode="96">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 276]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/util/reflection/ReflectionProvider.getGetMethod(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Method;">
+            <Message>Sink method com/opensymphony/xwork2/util/reflection/ReflectionProvider.getGetMethod(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/reflect/Method;</Message>
+        </String>
+        <String role="Sink parameter" value="0">
+            <Message>Sink parameter 0</Message>
+        </String>
+        <String role="Method usage" value="not detected">
+            <Message>Method usage not detected</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="92" endBytecode="27" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="92" startBytecode="27">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 92]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.DefaultObjectTypeDeterminer" end="116" endBytecode="30" sourcefile="DefaultObjectTypeDeterminer.java" sourcepath="com/opensymphony/xwork2/conversion/impl/DefaultObjectTypeDeterminer.java" start="116" startBytecode="30">
+            <Message>At DefaultObjectTypeDeterminer.java:[line 116]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="505c239932b737540c0896d19b62a441" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.conversion.impl.InstantiatingNullHandler" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.conversion.impl.InstantiatingNullHandler" end="152" sourcefile="InstantiatingNullHandler.java" sourcepath="com/opensymphony/xwork2/conversion/impl/InstantiatingNullHandler.java" start="69">
+                <Message>At InstantiatingNullHandler.java:[lines 69-152]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.conversion.impl.InstantiatingNullHandler</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.conversion.impl.InstantiatingNullHandler" isStatic="false" name="nullPropertyValue" primary="true" signature="(Ljava/util/Map;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;">
+            <SourceLine classname="com.opensymphony.xwork2.conversion.impl.InstantiatingNullHandler" end="137" endBytecode="491" sourcefile="InstantiatingNullHandler.java" sourcepath="com/opensymphony/xwork2/conversion/impl/InstantiatingNullHandler.java" start="98" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.conversion.impl.InstantiatingNullHandler.nullPropertyValue(Map, Object, Object)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.InstantiatingNullHandler" end="130" endBytecode="127" primary="true" sourcefile="InstantiatingNullHandler.java" sourcepath="com/opensymphony/xwork2/conversion/impl/InstantiatingNullHandler.java" start="130" startBytecode="127">
+            <Message>At InstantiatingNullHandler.java:[line 130]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/util/reflection/ReflectionProvider.setValue(Ljava/lang/String;Ljava/util/Map;Ljava/lang/Object;Ljava/lang/Object;)V">
+            <Message>Sink method com/opensymphony/xwork2/util/reflection/ReflectionProvider.setValue(Ljava/lang/String;Ljava/util/Map;Ljava/lang/Object;Ljava/lang/Object;)V</Message>
+        </String>
+        <String role="Sink parameter" value="3">
+            <Message>Sink parameter 3</Message>
+        </String>
+        <String role="Unknown source" value="java/lang/Object.toString()Ljava/lang/String;">
+            <Message>Unknown source java/lang/Object.toString()Ljava/lang/String;</Message>
+        </String>
+        <String role="Unknown source" value="org/apache/logging/log4j/Logger.debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V">
+            <Message>Unknown source org/apache/logging/log4j/Logger.debug(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V</Message>
+        </String>
+        <String role="Method usage" value="not detected">
+            <Message>Method usage not detected</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.InstantiatingNullHandler" end="98" endBytecode="7" sourcefile="InstantiatingNullHandler.java" sourcepath="com/opensymphony/xwork2/conversion/impl/InstantiatingNullHandler.java" start="98" startBytecode="7">
+            <Message>At InstantiatingNullHandler.java:[line 98]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.InstantiatingNullHandler" end="110" endBytecode="36" sourcefile="InstantiatingNullHandler.java" sourcepath="com/opensymphony/xwork2/conversion/impl/InstantiatingNullHandler.java" start="110" startBytecode="36">
+            <Message>At InstantiatingNullHandler.java:[line 110]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="85b208378521ecb595d6ac31ffea2847" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.conversion.impl.XWorkConverter" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.conversion.impl.XWorkConverter" end="602" sourcefile="XWorkConverter.java" sourcepath="com/opensymphony/xwork2/conversion/impl/XWorkConverter.java" start="136">
+                <Message>At XWorkConverter.java:[lines 136-602]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.conversion.impl.XWorkConverter</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.conversion.impl.XWorkConverter" isStatic="true" name="getConversionErrorMessage" primary="true" signature="(Ljava/lang/String;Lcom/opensymphony/xwork2/util/ValueStack;)Ljava/lang/String;">
+            <SourceLine classname="com.opensymphony.xwork2.conversion.impl.XWorkConverter" end="213" endBytecode="327" sourcefile="XWorkConverter.java" sourcepath="com/opensymphony/xwork2/conversion/impl/XWorkConverter.java" start="193" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.conversion.impl.XWorkConverter.getConversionErrorMessage(String, ValueStack)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.XWorkConverter" end="205" endBytecode="89" primary="true" sourcefile="XWorkConverter.java" sourcepath="com/opensymphony/xwork2/conversion/impl/XWorkConverter.java" start="205" startBytecode="89">
+            <Message>At XWorkConverter.java:[line 205]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/util/ValueStack.findValue(Ljava/lang/String;)Ljava/lang/Object;">
+            <Message>Sink method com/opensymphony/xwork2/util/ValueStack.findValue(Ljava/lang/String;)Ljava/lang/Object;</Message>
+        </String>
+        <String role="Sink parameter" value="0">
+            <Message>Sink parameter 0</Message>
+        </String>
+        <String role="Unknown source" value="java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;">
+            <Message>Unknown source java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;</Message>
+        </String>
+        <String role="Unknown source" value="java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;">
+            <Message>Unknown source java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;</Message>
+        </String>
+        <String role="Unknown source" value="java/lang/StringBuilder.toString()Ljava/lang/String;">
+            <Message>Unknown source java/lang/StringBuilder.toString()Ljava/lang/String;</Message>
+        </String>
+        <String role="Unknown source" value="com/opensymphony/xwork2/LocalizedTextProvider.findDefaultText(Ljava/lang/String;Ljava/util/Locale;[Ljava/lang/Object;)Ljava/lang/String;">
+            <Message>Unknown source com/opensymphony/xwork2/LocalizedTextProvider.findDefaultText(Ljava/lang/String;Ljava/util/Locale;[Ljava/lang/Object;)Ljava/lang/String;</Message>
+        </String>
+        <String role="Unknown source" value="com/opensymphony/xwork2/conversion/impl/XWorkConverter.removeAllIndexesInPropertyName(Ljava/lang/String;)Ljava/lang/String;">
+            <Message>Unknown source com/opensymphony/xwork2/conversion/impl/XWorkConverter.removeAllIndexesInPropertyName(Ljava/lang/String;)Ljava/lang/String;</Message>
+        </String>
+        <String role="Unknown source" value="java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;">
+            <Message>Unknown source java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;</Message>
+        </String>
+        <String role="Unknown source" value="java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;">
+            <Message>Unknown source java/lang/StringBuilder.append(Ljava/lang/String;)Ljava/lang/StringBuilder;</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.XWorkConverter" end="194" endBytecode="34" sourcefile="XWorkConverter.java" sourcepath="com/opensymphony/xwork2/conversion/impl/XWorkConverter.java" start="194" startBytecode="34">
+            <Message>At XWorkConverter.java:[line 194]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.XWorkConverter" end="202" endBytecode="47" sourcefile="XWorkConverter.java" sourcepath="com/opensymphony/xwork2/conversion/impl/XWorkConverter.java" start="202" startBytecode="47">
+            <Message>At XWorkConverter.java:[line 202]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.conversion.impl.XWorkConverter" end="204" endBytecode="64" sourcefile="XWorkConverter.java" sourcepath="com/opensymphony/xwork2/conversion/impl/XWorkConverter.java" start="204" startBytecode="64">
+            <Message>At XWorkConverter.java:[line 204]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.interceptor.ConversionErrorInterceptor" end="103" endBytecode="8" sourcefile="ConversionErrorInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/ConversionErrorInterceptor.java" start="103" startBytecode="8">
+            <Message>At ConversionErrorInterceptor.java:[line 103]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.interceptor.ConversionErrorInterceptor" end="108" endBytecode="46" sourcefile="ConversionErrorInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/ConversionErrorInterceptor.java" start="108" startBytecode="46">
+            <Message>At ConversionErrorInterceptor.java:[line 108]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.interceptor.ConversionErrorInterceptor" end="109" endBytecode="58" sourcefile="ConversionErrorInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/ConversionErrorInterceptor.java" start="109" startBytecode="58">
+            <Message>At ConversionErrorInterceptor.java:[line 109]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.interceptor.ConversionErrorInterceptor" end="113" endBytecode="92" sourcefile="ConversionErrorInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/ConversionErrorInterceptor.java" start="113" startBytecode="92">
+            <Message>At ConversionErrorInterceptor.java:[line 113]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.validator.validators.ConversionErrorFieldValidator" end="71" endBytecode="10" sourcefile="ConversionErrorFieldValidator.java" sourcepath="com/opensymphony/xwork2/validator/validators/ConversionErrorFieldValidator.java" start="71" startBytecode="10">
+            <Message>At ConversionErrorFieldValidator.java:[line 71]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.validator.validators.ConversionErrorFieldValidator" end="77" endBytecode="56" sourcefile="ConversionErrorFieldValidator.java" sourcepath="com/opensymphony/xwork2/validator/validators/ConversionErrorFieldValidator.java" start="77" startBytecode="56">
+            <Message>At ConversionErrorFieldValidator.java:[line 77]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="2f54c26a7d501506f3ef9f5209e83d1e" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.factory.DefaultInterceptorFactory" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.factory.DefaultInterceptorFactory" end="97" sourcefile="DefaultInterceptorFactory.java" sourcepath="com/opensymphony/xwork2/factory/DefaultInterceptorFactory.java" start="37">
+                <Message>At DefaultInterceptorFactory.java:[lines 37-97]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.factory.DefaultInterceptorFactory</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.factory.DefaultInterceptorFactory" isStatic="false" name="buildInterceptor" primary="true" signature="(Lcom/opensymphony/xwork2/config/entities/InterceptorConfig;Ljava/util/Map;)Lcom/opensymphony/xwork2/interceptor/Interceptor;">
+            <SourceLine classname="com.opensymphony.xwork2.factory.DefaultInterceptorFactory" end="97" endBytecode="955" sourcefile="DefaultInterceptorFactory.java" sourcepath="com/opensymphony/xwork2/factory/DefaultInterceptorFactory.java" start="55" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.factory.DefaultInterceptorFactory.buildInterceptor(InterceptorConfig, Map)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.factory.DefaultInterceptorFactory" end="70" endBytecode="91" primary="true" sourcefile="DefaultInterceptorFactory.java" sourcepath="com/opensymphony/xwork2/factory/DefaultInterceptorFactory.java" start="70" startBytecode="91">
+            <Message>At DefaultInterceptorFactory.java:[line 70]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/util/reflection/ReflectionProvider.setProperties(Ljava/util/Map;Ljava/lang/Object;)V">
+            <Message>Sink method com/opensymphony/xwork2/util/reflection/ReflectionProvider.setProperties(Ljava/util/Map;Ljava/lang/Object;)V</Message>
+        </String>
+        <String role="Sink parameter" value="1">
+            <Message>Sink parameter 1</Message>
+        </String>
+        <String role="Unknown source" value="java/util/HashMap.&lt;init&gt;(Ljava/util/Map;)V">
+            <Message>Unknown source java/util/HashMap.&lt;init&gt;(Ljava/util/Map;)V</Message>
+        </String>
+        <String role="Unknown source" value="com/opensymphony/xwork2/config/entities/InterceptorConfig.getParams()Ljava/util/Map;">
+            <Message>Unknown source com/opensymphony/xwork2/config/entities/InterceptorConfig.getParams()Ljava/util/Map;</Message>
+        </String>
+        <String role="Unknown source" value="java/util/Map.putAll(Ljava/util/Map;)V">
+            <Message>Unknown source java/util/Map.putAll(Ljava/util/Map;)V</Message>
+        </String>
+        <String role="Method usage" value="not detected">
+            <Message>Method usage not detected</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.factory.DefaultInterceptorFactory" end="56" endBytecode="6" sourcefile="DefaultInterceptorFactory.java" sourcepath="com/opensymphony/xwork2/factory/DefaultInterceptorFactory.java" start="56" startBytecode="6">
+            <Message>At DefaultInterceptorFactory.java:[line 56]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.factory.DefaultInterceptorFactory" end="57" endBytecode="32" sourcefile="DefaultInterceptorFactory.java" sourcepath="com/opensymphony/xwork2/factory/DefaultInterceptorFactory.java" start="57" startBytecode="32">
+            <Message>At DefaultInterceptorFactory.java:[line 57]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.factory.DefaultInterceptorFactory" end="58" endBytecode="40" sourcefile="DefaultInterceptorFactory.java" sourcepath="com/opensymphony/xwork2/factory/DefaultInterceptorFactory.java" start="58" startBytecode="40">
+            <Message>At DefaultInterceptorFactory.java:[line 58]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="7adcb2c3ae153355150aa2ef715af4db" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.factory.DefaultResultFactory" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.factory.DefaultResultFactory" end="69" sourcefile="DefaultResultFactory.java" sourcepath="com/opensymphony/xwork2/factory/DefaultResultFactory.java" start="34">
+                <Message>At DefaultResultFactory.java:[lines 34-69]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.factory.DefaultResultFactory</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.factory.DefaultResultFactory" isStatic="false" name="buildResult" primary="true" signature="(Lcom/opensymphony/xwork2/config/entities/ResultConfig;Ljava/util/Map;)Lcom/opensymphony/xwork2/Result;">
+            <SourceLine classname="com.opensymphony.xwork2.factory.DefaultResultFactory" end="69" endBytecode="419" sourcefile="DefaultResultFactory.java" sourcepath="com/opensymphony/xwork2/factory/DefaultResultFactory.java" start="50" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.factory.DefaultResultFactory.buildResult(ResultConfig, Map)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.factory.DefaultResultFactory" end="59" endBytecode="98" primary="true" sourcefile="DefaultResultFactory.java" sourcepath="com/opensymphony/xwork2/factory/DefaultResultFactory.java" start="59" startBytecode="98">
+            <Message>At DefaultResultFactory.java:[line 59]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/util/reflection/ReflectionProvider.setProperty(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/util/Map;Z)V">
+            <Message>Sink method com/opensymphony/xwork2/util/reflection/ReflectionProvider.setProperty(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/util/Map;Z)V</Message>
+        </String>
+        <String role="Sink parameter" value="4">
+            <Message>Sink parameter 4</Message>
+        </String>
+        <String role="Unknown source" value="com/opensymphony/xwork2/config/entities/ResultConfig.getParams()Ljava/util/Map;">
+            <Message>Unknown source com/opensymphony/xwork2/config/entities/ResultConfig.getParams()Ljava/util/Map;</Message>
+        </String>
+        <String role="Unknown source" value="java/util/Iterator.next()Ljava/lang/Object;">
+            <Message>Unknown source java/util/Iterator.next()Ljava/lang/Object;</Message>
+        </String>
+        <String role="Unknown source" value="java/util/Map$Entry.getKey()Ljava/lang/Object;">
+            <Message>Unknown source java/util/Map$Entry.getKey()Ljava/lang/Object;</Message>
+        </String>
+        <String role="Unknown source" value="java/util/Set.iterator()Ljava/util/Iterator;">
+            <Message>Unknown source java/util/Set.iterator()Ljava/util/Iterator;</Message>
+        </String>
+        <String role="Unknown source" value="java/util/Map.entrySet()Ljava/util/Set;">
+            <Message>Unknown source java/util/Map.entrySet()Ljava/util/Set;</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.factory.DefaultResultFactory" end="55" endBytecode="27" sourcefile="DefaultResultFactory.java" sourcepath="com/opensymphony/xwork2/factory/DefaultResultFactory.java" start="55" startBytecode="27">
+            <Message>At DefaultResultFactory.java:[line 55]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.factory.DefaultResultFactory" end="57" endBytecode="63" sourcefile="DefaultResultFactory.java" sourcepath="com/opensymphony/xwork2/factory/DefaultResultFactory.java" start="57" startBytecode="63">
+            <Message>At DefaultResultFactory.java:[line 57]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.factory.DefaultResultFactory" end="59" endBytecode="79" sourcefile="DefaultResultFactory.java" sourcepath="com/opensymphony/xwork2/factory/DefaultResultFactory.java" start="59" startBytecode="79">
+            <Message>At DefaultResultFactory.java:[line 59]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="71b1734a635cd1cafe82c81fa97ef213" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.factory.DefaultValidatorFactory" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.factory.DefaultValidatorFactory" end="50" sourcefile="DefaultValidatorFactory.java" sourcepath="com/opensymphony/xwork2/factory/DefaultValidatorFactory.java" start="31">
+                <Message>At DefaultValidatorFactory.java:[lines 31-50]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.factory.DefaultValidatorFactory</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.factory.DefaultValidatorFactory" isStatic="false" name="buildValidator" primary="true" signature="(Ljava/lang/String;Ljava/util/Map;Ljava/util/Map;)Lcom/opensymphony/xwork2/validator/Validator;">
+            <SourceLine classname="com.opensymphony.xwork2.factory.DefaultValidatorFactory" end="50" endBytecode="147" sourcefile="DefaultValidatorFactory.java" sourcepath="com/opensymphony/xwork2/factory/DefaultValidatorFactory.java" start="47" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.factory.DefaultValidatorFactory.buildValidator(String, Map, Map)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.factory.DefaultValidatorFactory" end="48" endBytecode="22" primary="true" sourcefile="DefaultValidatorFactory.java" sourcepath="com/opensymphony/xwork2/factory/DefaultValidatorFactory.java" start="48" startBytecode="22">
+            <Message>At DefaultValidatorFactory.java:[line 48]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/util/reflection/ReflectionProvider.setProperties(Ljava/util/Map;Ljava/lang/Object;Ljava/util/Map;)V">
+            <Message>Sink method com/opensymphony/xwork2/util/reflection/ReflectionProvider.setProperties(Ljava/util/Map;Ljava/lang/Object;Ljava/util/Map;)V</Message>
+        </String>
+        <String role="Sink parameter" value="2">
+            <Message>Sink parameter 2</Message>
+        </String>
+        <String role="Method usage" value="not detected">
+            <Message>Method usage not detected</Message>
+        </String>
+    </BugInstance>
+    <BugInstance abbrev="SECDESGAD" category="SECURITY" cweid="502" instanceHash="7bc91e6ad6dda5aa6d967eb5cb03bbc0" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="3" rank="15" type="DESERIALIZATION_GADGET">
+        <ShortMessage>This class could be used as deserialization gadget</ShortMessage>
+        <LongMessage>This class could make application using serialization vulnerable</LongMessage>
+        <Class classname="com.opensymphony.xwork2.inject.util.ReferenceMap" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.inject.util.ReferenceMap" end="607" sourcefile="ReferenceMap.java" sourcepath="com/opensymphony/xwork2/inject/util/ReferenceMap.java" start="76">
+                <Message>At ReferenceMap.java:[lines 76-607]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.inject.util.ReferenceMap</Message>
+        </Class>
+        <SourceLine classname="com.opensymphony.xwork2.inject.util.ReferenceMap" end="607" sourcefile="ReferenceMap.java" sourcepath="com/opensymphony/xwork2/inject/util/ReferenceMap.java" start="76" synthetic="true">
+            <Message>At ReferenceMap.java:[lines 76-607]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECCRLFLOG" category="SECURITY" cweid="117" instanceHash="e718f98a10cc0d77c4bb3edbe6541fe" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="3" rank="15" type="CRLF_INJECTION_LOGS">
+        <ShortMessage>Potential CRLF Injection for logs</ShortMessage>
+        <LongMessage>This use of org/apache/logging/log4j/Logger.error(Ljava/lang/String;)V might be used to include CRLF characters into log messages</LongMessage>
+        <Class classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="203" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="91">
+                <Message>At AliasInterceptor.java:[lines 91-203]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.interceptor.AliasInterceptor</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" isStatic="false" name="intercept" primary="true" signature="(Lcom/opensymphony/xwork2/ActionInvocation;)Ljava/lang/String;">
+            <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="203" endBytecode="1157" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="134" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.interceptor.AliasInterceptor.intercept(ActionInvocation)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="187" endBytecode="426" primary="true" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="187" startBytecode="426">
+            <Message>At AliasInterceptor.java:[line 187]</Message>
+        </SourceLine>
+        <String role="Sink method" value="org/apache/logging/log4j/Logger.error(Ljava/lang/String;)V">
+            <Message>Sink method org/apache/logging/log4j/Logger.error(Ljava/lang/String;)V</Message>
+        </String>
+        <String role="Sink parameter" value="0">
+            <Message>Sink parameter 0</Message>
+        </String>
+        <String role="Unknown source" value="com/opensymphony/xwork2/LocalizedTextProvider.findText(Ljava/lang/Class;Ljava/lang/String;Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;">
+            <Message>Unknown source com/opensymphony/xwork2/LocalizedTextProvider.findText(Ljava/lang/Class;Ljava/lang/String;Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="184" endBytecode="414" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="184" startBytecode="414">
+            <Message>At AliasInterceptor.java:[line 184]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="c74334682957c304ec61ef36ac30219" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="203" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="91">
+                <Message>At AliasInterceptor.java:[lines 91-203]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.interceptor.AliasInterceptor</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" isStatic="false" name="intercept" primary="true" signature="(Lcom/opensymphony/xwork2/ActionInvocation;)Ljava/lang/String;">
+            <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="203" endBytecode="1157" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="134" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.interceptor.AliasInterceptor.intercept(ActionInvocation)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="145" endBytecode="73" primary="true" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="145" startBytecode="73">
+            <Message>At AliasInterceptor.java:[line 145]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/util/ValueStack.findValue(Ljava/lang/String;)Ljava/lang/Object;">
+            <Message>Sink method com/opensymphony/xwork2/util/ValueStack.findValue(Ljava/lang/String;)Ljava/lang/Object;</Message>
+        </String>
+        <String role="Sink parameter" value="0">
+            <Message>Sink parameter 0</Message>
+        </String>
+        <String role="Unknown source" value="com/opensymphony/xwork2/config/entities/ActionConfig.getParams()Ljava/util/Map;">
+            <Message>Unknown source com/opensymphony/xwork2/config/entities/ActionConfig.getParams()Ljava/util/Map;</Message>
+        </String>
+        <String role="Unknown source" value="java/util/Map.get(Ljava/lang/Object;)Ljava/lang/Object;">
+            <Message>Unknown source java/util/Map.get(Ljava/lang/Object;)Ljava/lang/Object;</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="139" endBytecode="28" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="139" startBytecode="28">
+            <Message>At AliasInterceptor.java:[line 139]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="143" endBytecode="53" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="143" startBytecode="53">
+            <Message>At AliasInterceptor.java:[line 143]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="bdc40e77eff7d260b671129e026d3657" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="203" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="91">
+                <Message>At AliasInterceptor.java:[lines 91-203]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.interceptor.AliasInterceptor</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" isStatic="false" name="intercept" primary="true" signature="(Lcom/opensymphony/xwork2/ActionInvocation;)Ljava/lang/String;">
+            <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="203" endBytecode="1157" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="134" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.interceptor.AliasInterceptor.intercept(ActionInvocation)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="170" endBytecode="258" primary="true" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="170" startBytecode="258">
+            <Message>At AliasInterceptor.java:[line 170]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/util/ValueStack.findValue(Ljava/lang/String;)Ljava/lang/Object;">
+            <Message>Sink method com/opensymphony/xwork2/util/ValueStack.findValue(Ljava/lang/String;)Ljava/lang/Object;</Message>
+        </String>
+        <String role="Sink parameter" value="0">
+            <Message>Sink parameter 0</Message>
+        </String>
+        <String role="Unknown source" value="com/opensymphony/xwork2/util/ValueStack.findValue(Ljava/lang/String;)Ljava/lang/Object;">
+            <Message>Unknown source com/opensymphony/xwork2/util/ValueStack.findValue(Ljava/lang/String;)Ljava/lang/Object;</Message>
+        </String>
+        <String role="Unknown source" value="java/lang/Object.toString()Ljava/lang/String;">
+            <Message>Unknown source java/lang/Object.toString()Ljava/lang/String;</Message>
+        </String>
+        <String role="Unknown source" value="java/util/Map.entrySet()Ljava/util/Set;">
+            <Message>Unknown source java/util/Map.entrySet()Ljava/util/Set;</Message>
+        </String>
+        <String role="Unknown source" value="java/util/Set.iterator()Ljava/util/Iterator;">
+            <Message>Unknown source java/util/Set.iterator()Ljava/util/Iterator;</Message>
+        </String>
+        <String role="Unknown source" value="java/util/Iterator.next()Ljava/lang/Object;">
+            <Message>Unknown source java/util/Iterator.next()Ljava/lang/Object;</Message>
+        </String>
+        <String role="Unknown source" value="java/util/Map$Entry.getKey()Ljava/lang/Object;">
+            <Message>Unknown source java/util/Map$Entry.getKey()Ljava/lang/Object;</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="145" endBytecode="73" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="145" startBytecode="73">
+            <Message>At AliasInterceptor.java:[line 145]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="166" endBytecode="188" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="166" startBytecode="188">
+            <Message>At AliasInterceptor.java:[line 166]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="168" endBytecode="233" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="168" startBytecode="233">
+            <Message>At AliasInterceptor.java:[line 168]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECOGNL" category="SECURITY" cweid="94" instanceHash="3237b7055277c38b47657e892399e7f0" instanceOccurrenceMax="0" instanceOccurrenceNum="0" priority="2" rank="12" type="OGNL_INJECTION">
+        <ShortMessage>Potential code injection when using OGNL expression</ShortMessage>
+        <LongMessage>Potential code injection when using OGNL expression</LongMessage>
+        <Class classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="203" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="91">
+                <Message>At AliasInterceptor.java:[lines 91-203]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.interceptor.AliasInterceptor</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" isStatic="false" name="intercept" primary="true" signature="(Lcom/opensymphony/xwork2/ActionInvocation;)Ljava/lang/String;">
+            <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="203" endBytecode="1157" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="134" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.interceptor.AliasInterceptor.intercept(ActionInvocation)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="181" endBytecode="323" primary="true" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="181" startBytecode="323">
+            <Message>At AliasInterceptor.java:[line 181]</Message>
+        </SourceLine>
+        <String role="Sink method" value="com/opensymphony/xwork2/util/ValueStack.setValue(Ljava/lang/String;Ljava/lang/Object;)V">
+            <Message>Sink method com/opensymphony/xwork2/util/ValueStack.setValue(Ljava/lang/String;Ljava/lang/Object;)V</Message>
+        </String>
+        <String role="Sink parameter" value="1">
+            <Message>Sink parameter 1</Message>
+        </String>
+        <String role="Unknown source" value="com/opensymphony/xwork2/util/ValueStack.findValue(Ljava/lang/String;)Ljava/lang/Object;">
+            <Message>Unknown source com/opensymphony/xwork2/util/ValueStack.findValue(Ljava/lang/String;)Ljava/lang/Object;</Message>
+        </String>
+        <String role="Unknown source" value="java/util/Map.entrySet()Ljava/util/Set;">
+            <Message>Unknown source java/util/Map.entrySet()Ljava/util/Set;</Message>
+        </String>
+        <String role="Unknown source" value="java/util/Map$Entry.getValue()Ljava/lang/Object;">
+            <Message>Unknown source java/util/Map$Entry.getValue()Ljava/lang/Object;</Message>
+        </String>
+        <String role="Unknown source" value="java/util/Set.iterator()Ljava/util/Iterator;">
+            <Message>Unknown source java/util/Set.iterator()Ljava/util/Iterator;</Message>
+        </String>
+        <String role="Unknown source" value="java/util/Iterator.next()Ljava/lang/Object;">
+            <Message>Unknown source java/util/Iterator.next()Ljava/lang/Object;</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="145" endBytecode="73" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="145" startBytecode="73">
+            <Message>At AliasInterceptor.java:[line 145]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="166" endBytecode="188" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="166" startBytecode="188">
+            <Message>At AliasInterceptor.java:[line 166]</Message>
+        </SourceLine>
+        <SourceLine classname="com.opensymphony.xwork2.interceptor.AliasInterceptor" end="169" endBytecode="240" sourcefile="AliasInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/AliasInterceptor.java" start="169" startBytecode="240">
+            <Message>At AliasInterceptor.java:[line 169]</Message>
+        </SourceLine>
+    </BugInstance>
+    <BugInstance abbrev="SECCRLFLOG" category="SECURITY" cweid="117" instanceHash="3c584661dbdb647e37faf3c495218b2c" instanceOccurrenceMax="1" instanceOccurrenceNum="0" priority="3" rank="15" type="CRLF_INJECTION_LOGS">
+        <ShortMessage>Potential CRLF Injection for logs</ShortMessage>
+        <LongMessage>This use of org/apache/logging/log4j/Logger.debug(Ljava/lang/String;Ljava/lang/Throwable;)V might be used to include CRLF characters into log messages</LongMessage>
+        <Class classname="com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor" primary="true">
+            <SourceLine classname="com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor" end="321" sourcefile="ExceptionMappingInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/ExceptionMappingInterceptor.java" start="157">
+                <Message>At ExceptionMappingInterceptor.java:[lines 157-321]</Message>
+            </SourceLine>
+            <Message>In class com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor</Message>
+        </Class>
+        <Method classname="com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor" isStatic="false" name="doLog" primary="true" signature="(Lorg/apache/logging/log4j/Logger;Ljava/lang/Exception;)V">
+            <SourceLine classname="com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor" end="262" endBytecode="352" sourcefile="ExceptionMappingInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/ExceptionMappingInterceptor.java" start="242" startBytecode="0"/>
+            <Message>In method com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor.doLog(Logger, Exception)</Message>
+        </Method>
+        <SourceLine classname="com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor" end="243" endBytecode="13" primary="true" sourcefile="ExceptionMappingInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/ExceptionMappingInterceptor.java" start="243" startBytecode="13">
+            <Message>At ExceptionMappingInterceptor.java:[line 243]</Message>
+        </SourceLine>
+        <String role="Sink method" value="org/apache/logging/log4j/Logger.debug(Ljava/lang/String;Ljava/lang/Throwable;)V">
+            <Message>Sink method org/apache/logging/log4j/Logger.debug(Ljava/lang/String;Ljava/lang/Throwable;)V</Message>
+        </String>
+        <String role="Sink parameter" value="1">
+            <Message>Sink parameter 1</Message>
+        </String>
+        <String role="Unknown source" value="java/lang/Exception.getMessage()Ljava/lang/String;">
+            <Message>Unknown source java/lang/Exception.getMessage()Ljava/lang/String;</Message>
+        </String>
+        <SourceLine classname="com.opensymphony.xwork2.interceptor.ExceptionMappingInterceptor" end="243" endBytecode="9" sourcefile="ExceptionMappingInterceptor.java" sourcepath="com/opensymphony/xwork2/interceptor/ExceptionMappingInterceptor.java" start="243" startBytecode="9">
+            <Message>At ExceptionMappingInterceptor.java:[line 243]</Message>
+        </SourceLine>
+    </BugInstance>
+
+</BugCollection>

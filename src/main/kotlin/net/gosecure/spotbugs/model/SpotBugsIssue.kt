@@ -1,4 +1,4 @@
-package net.gosecure.spotbugs
+package net.gosecure.spotbugs.model
 
 
 /**
@@ -39,7 +39,7 @@ class SpotBugsIssue(var sourceFile:String,
                     var hashAllSources:String = "") {
 
     fun getKey():String {
-        return Companion.getKey(sourceFile,startLine,bugType)
+        return getKey(sourceFile, startLine, bugType)
     }
 
     companion object {

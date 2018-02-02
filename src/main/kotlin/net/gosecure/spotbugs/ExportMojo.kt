@@ -1,15 +1,11 @@
 package net.gosecure.spotbugs
 
-import net.gosecure.spotbugs.datasource.FindBugsXml
-import net.gosecure.spotbugs.datasource.Neo4jGraph
-import net.gosecure.spotbugs.datasource.RemoteSonarSource
+import org.apache.http.impl.client.HttpClientBuilder
 import org.apache.maven.plugin.AbstractMojo
 import org.apache.maven.plugins.annotations.Mojo
 import org.apache.maven.plugins.annotations.Parameter
 import org.apache.maven.project.MavenProject
-import org.neo4j.graphdb.factory.GraphDatabaseFactory
 import java.io.File
-import java.io.IOException
 
 @Mojo(name="export-csv")
 class ExportMojo : AbstractMojo() {
@@ -21,162 +17,74 @@ class ExportMojo : AbstractMojo() {
 
     override fun execute() {
 
-        //var isRootPom = project!!.isExecutionRoot()
+        val logWrapper = LogWrapper()
+        LogWrapper.log = log //Enable Maven logger
+
+        val client = HttpClientBuilder.create().build()
+        val logic = ExportLogic(logWrapper,client) //Injecting dependencies
+
+        val groupId    = project.groupId
+        val artifactId = project.artifactId
 
 
-        var exportedIssues = ArrayList<SpotBugsIssue>()
-
-        //Sonar Export
-
-        var sonarIssues:List<SpotBugsIssue> = mutableListOf()
-        try {
-            sonarIssues = RemoteSonarSource(log, "http://localhost:9000").getSonarIssues(project)
-            log.info("Found ${sonarIssues.size} Sonar issues")
-        }
-        catch (ioe: IOException){
-            log.warn("Skipping sonar data import")
-        }
-
-        val sonarIssuesLookupTable = HashMap<String,SpotBugsIssue>()
-        for(i in sonarIssues) {
-            sonarIssuesLookupTable.put(i.getKey(), i)
-        }
-
-        //SpotBugs
-
-        var spotBugsIssues = FindBugsXml(log).getSpotBugsIssues(project)
-
-        if(sonarIssuesLookupTable.size > 0) {
-
-            log.info("Found ${spotBugsIssues.size} SpotBugs issues")
+        //Gather sonar issues
+        val sonarIssuesLookupTable = logic.getSonarIssues(groupId, artifactId)
 
 
-            //Integrating SonarQube metadata
-            for (sbIssue in spotBugsIssues) {
+        //SpotBugs issues
+        //Find the findbugsXml.xml report
+        val buildDir = project!!.build.directory as String
+        val sonarDir = File(buildDir, "sonar")
 
-                var existingIssue = sonarIssuesLookupTable.get(sbIssue.getKey())
-                if (existingIssue != null) {
-                    existingIssue.cwe = sbIssue.cwe
-                    existingIssue.methodSink = sbIssue.methodSink
-                    existingIssue.methodSinkParameter = sbIssue.methodSinkParameter
-                    existingIssue.unknownSource = sbIssue.unknownSource
-                    existingIssue.sourceMethod = sbIssue.sourceMethod
-
-                    exportedIssues.add(existingIssue)
-                } else {
-                    log.error("Unable to find the corresponding issue")
-                }
-            }
-        } else {
-            exportedIssues = spotBugsIssues as ArrayList<SpotBugsIssue>
-            log.warn("Using only SpotBugs as data source (${spotBugsIssues.size}) issues added")
+        if (!sonarDir.exists()) {
+            log.warn("No sonar directory found in the project ${project!!.basedir}. Sonar must be runned prior to the export.")
+            return
         }
 
+        val findbugsResults = getFindBugsResultFileOnMaven(buildDir)
+        val classMappingFile = File(sonarDir, "class-mapping.csv")
 
-        val buildDirectory = project.build.directory
 
-        //Integrating Neo4j metadata
-        val fileGraph = getGraphFile(buildDirectory)
+        var spotBugsIssues = logic.getSpotBugsIssues(findbugsResults,classMappingFile)
+
+
+        //Sonar + SpotBugs
+        var exportedIssues = logic.enrichSonarExportIssue(sonarIssuesLookupTable, spotBugsIssues)
+
+
+        //Add graph metadata
+        val fileGraph = getGraphFile(buildDir)
 
         if(fileGraph == null) {
             log.error("Graph database not found. (codegraph.db)")
         }
-        else { log.info("Using graph database located at ${fileGraph.path}")
-            val db = GraphDatabaseFactory().newEmbeddedDatabase(fileGraph)
-            try {
-                val graphDb = Neo4jGraph(db)
-                val totalIssue = exportedIssues.size
-                var issueIndex = 0
-                for (issue in exportedIssues) {
-                    issueIndex++
-                    if (issue.methodSink != "") {
-                        val start = System.currentTimeMillis()
-
-                        issue.hasTaintedSource = false
-                        issue.hasSafeSource = false
-                        issue.hasUnknownSource = false
-
-                        if(issue.sourceMethod == null) {
-                            log.warn("No source method defined for the entry : $issue")
-                            continue
-                        }
-                        var nodes = graphDb.searchSource(issue.methodSink + "_p" + issue.methodSinkParameter, issue.sourceMethod!!)
-                        for (n in nodes) {
-                            when(n.state) {
-                                "SAFE" -> {
-                                    issue.hasSafeSource = true
-                                }
-                                "TAINTED" -> {
-                                    issue.hasTaintedSource = true
-                                }
-                                "UNKNOWN" -> {
-                                    issue.hasUnknownSource = true
-                                }
-                                else -> {
-                                    log.warn("Unknown state : ${n.state}")
-                                }
-                            }
-                        }
-
-
-                        val end = System.currentTimeMillis()
-                        log.info("Query executed ${end-start} ms (Tainted ${issue.hasTaintedSource}, Safe ${issue.hasSafeSource }, Unknown ${issue.hasUnknownSource})")
-                    }
-                    log.info("Issue %d - Progress %.2f %%".format(issueIndex, issueIndex * 100.0 / totalIssue))
-                }
-            }
-            finally {
-                db.shutdown();
-            }
+        else {
+            log.info("Using graph database located at ${fileGraph.path}")
+            logic.graph(exportedIssues,fileGraph)
         }
+
+        //Report coverage (sonar and SpotBugs combined)
+        logic.reportCoverage(exportedIssues, spotBugsIssues)
+
 
         //Exported to CSV
-        if(exportedIssues.size > 0) {
-            val pourcentCoverage = "%.2f".format((exportedIssues.size.toDouble() / spotBugsIssues.size.toDouble()) * 100.toDouble())
-            val msg = "${exportedIssues.size} mapped issues from ${spotBugsIssues.size} total SB issues (${pourcentCoverage} %)"
-            if((spotBugsIssues.size - exportedIssues.size) == 0) {
-                log.info(msg)
-            }
-            else {
-                log.warn(msg)
-            }
-
-            val buildDir = project.build.directory
-            val sonarDir = File(buildDir, "spotbugs-ml")
-            val aggregateResults = File(sonarDir, "aggregate-results.csv")
-
-            aggregateResults.createNewFile()
-
-            val writer = aggregateResults.printWriter()
-            writer.println("SourceFile,LineNumber,GroupId,ArtifactId,Author,BugType,CWE,MethodSink,UnknownSource,SourceMethod,HasTainted Source,HasSafeSource,HasUnknownSource,Status,Key")
-            for(finalIssue in exportedIssues) {
-//                    var finalIssue = entry.value
-                writer.println("${finalIssue.sourceFile},${finalIssue.startLine}," +
-                        "${finalIssue.groupId},${finalIssue.artifactId}," +
-                        "${finalIssue.author},${finalIssue.bugType},"+
-                        "${finalIssue.cwe}," +
-                        "${finalIssue.methodSink},${finalIssue.unknownSource}," +
-                        "${finalIssue.sourceMethod},"+
-                        "${finalIssue.hasTaintedSource?:""},${finalIssue.hasSafeSource?:""},${finalIssue.hasUnknownSource?:""}," +
-                        "${finalIssue.status}," +
-                        "${finalIssue.issueKey}")
-            }
-
-            writer.flush()
-            writer.close()
-        }
+        val aggregateResults = File(sonarDir, "aggregate-results.csv")
+        aggregateResults.createNewFile()
+        val sonarMlDir = File(buildDir, "spotbugs-ml")
+        logic.exportCsv(exportedIssues, aggregateResults)
 
 
     }
 
-    fun emptyIfNull(value:String?):String = value ?: ""
+
+
 
     /**
      * Look at parent directory to find the graph present at the root directory.
      * TODO: Make a more elegant solution
      * @return Database directory or null if not found
      */
-    fun getGraphFile(baseDir:String) : File? {
+    private fun getGraphFile(baseDir:String) : File? {
         val testDir = File(baseDir)
         val testGraphFile = File(baseDir,"codegraph.db")
         if(testGraphFile.isDirectory) {
@@ -187,6 +95,16 @@ class ExportMojo : AbstractMojo() {
             return getGraphFile(parentDir)
         }
     }
+
+
+    private fun getFindBugsResultFileOnMaven(buildDir:String): File {
+        val mvnFbPluginFile    = File(buildDir, "findbugsXml.xml")
+        val mvnSonarPluginFile = File(buildDir, "sonar/findbugs-result.xml")
+        return if (mvnFbPluginFile.exists()) mvnFbPluginFile  else mvnSonarPluginFile
+    }
+
+    fun emptyIfNull(value:String?):String = value ?: ""
+
 
 
 }

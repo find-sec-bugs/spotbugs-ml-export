@@ -1,39 +1,24 @@
 package net.gosecure.spotbugs.datasource
 
-import net.gosecure.spotbugs.SpotBugsIssue
+import net.gosecure.spotbugs.LogWrapper
+import net.gosecure.spotbugs.model.SpotBugsIssue
 import org.apache.maven.plugin.logging.Log
-import org.apache.maven.project.MavenProject
+import org.dom4j.Node
 import org.dom4j.io.SAXReader
 import org.dom4j.tree.DefaultElement
+import java.io.BufferedReader
 import java.io.File
+import java.io.InputStream
+import java.nio.charset.Charset
 
-class FindBugsXml(val log: Log) {
+class FindBugsReportSource(val log: LogWrapper) {
 
     /**
      * Get a list of SpotBugs issues
      */
-    fun getSpotBugsIssues(project: MavenProject):List<SpotBugsIssue> {
+    fun getSpotBugsIssues(findbugsResults:InputStream,classMappingFile: InputStream):ArrayList<SpotBugsIssue> {
         val spotBugsIssues = ArrayList<SpotBugsIssue>()
 
-        val buildDir = project!!.build.directory
-        val sonarDir = File(buildDir, "sonar")
-
-        if (!sonarDir.exists()) {
-            log.warn("No sonar directory found in the project ${project!!.basedir}. Sonar must be runned prior to the export.")
-            return spotBugsIssues
-        }
-
-        val findbugsResults = getFindBugsResultFile(buildDir)
-        val classMappingFile = File(sonarDir, "class-mapping.csv")
-
-        if (!findbugsResults.exists()) {
-            log.error("sonar/findbugs-result.xml or findbugsXml.xml is missing")
-            return spotBugsIssues
-        }
-        if (!classMappingFile.exists()) {
-            log.error("sonar/class_mapping.csv is missing")
-            return spotBugsIssues
-        }
 
         val classMappingLoaded = getClassMapping(classMappingFile)
 
@@ -57,18 +42,19 @@ class FindBugsXml(val log: Log) {
                 log.warn("BugInstance has no start line of code  ($instanceHash)")
                 continue
             }
-            val sourceFile = getSourceFile(sourceClass.first,sourceClass.second, classMappingLoaded)
+            var sourceFile = getSourceFile(sourceClass.first,sourceClass.second, classMappingLoaded)
             if(sourceFile == null) {
                 log.warn("Unable to map the class ${sourceClass.first}:${sourceClass.second}")
-                continue
+                //continue
+                sourceFile = Pair("",1)
             }
 
             val fullyQualifiedMethod = getMethodFile(elem)
 
             var issue = SpotBugsIssue(sourceFile.first,
                     sourceFile.second,
-                    "","","","",
-                    type, cweid , "", -1,"","", fullyQualifiedMethod)
+                    "", "", "", "",
+                    type, cweid, "", -1, "", "", fullyQualifiedMethod)
 
             for(stringValue in elem.selectNodes("String")) { //Extra properties
                 val stringElem = stringValue as DefaultElement
@@ -93,12 +79,6 @@ class FindBugsXml(val log: Log) {
         return spotBugsIssues
     }
 
-    private fun getFindBugsResultFile(buildDir:String): File {
-        val mvnFbPluginFile    = File(buildDir, "findbugsXml.xml")
-        val mvnSonarPluginFile = File(buildDir, "sonar/findbugs-result.xml")
-        return if (mvnFbPluginFile.exists()) mvnFbPluginFile  else mvnSonarPluginFile
-    }
-
     private fun getMethodFile(elem: DefaultElement): String? {
 
         val methodNodes = elem.selectNodes("Method")
@@ -119,10 +99,10 @@ class FindBugsXml(val log: Log) {
 
 
     fun getLineOfCode(elem:DefaultElement):Pair<String,Int>? {
-        val classNodes = elem.selectNodes("Class")
-        val methodNodes = elem.selectNodes("Method")
-        val fieldNodes = elem.selectNodes("Field")
-        val sourceLineNodes  = elem.selectNodes("SourceLine")
+        val classNodes  = getChild("Class" ,elem)
+        val methodNodes = getChild("Method",elem)
+        val fieldNodes  = getChild("Field" ,elem)
+        val sourceLineNodes = getChild("SourceLine",elem)
 
         var elem:DefaultElement? = null
         if(sourceLineNodes.size>0) {
@@ -146,10 +126,20 @@ class FindBugsXml(val log: Log) {
         return null
     }
 
-    fun getClassMapping(classMappingFile: File):Map<Pair<String,Int>,Pair<String,Int>> {
+    fun getChild(nodeName:String, elem:DefaultElement):List<Node> {
+        val nodes = ArrayList<Node>()
+        for(e in elem.elements()) {
+            if(e.name == nodeName) {
+                nodes.add(e)
+            }
+        }
+        return nodes
+    }
+
+    fun getClassMapping(classMappingFile: InputStream):Map<Pair<String,Int>,Pair<String,Int>> {
         val mapping = HashMap<Pair<String,Int>,Pair<String,Int>>()
 
-        for(line in classMappingFile.readLines()) {
+        for(line in classMappingFile.bufferedReader().lines()) {
             val parts = line.split(",")
             if(parts.size < 2) continue
             var classPart = parts[0].split(":")
@@ -163,6 +153,7 @@ class FindBugsXml(val log: Log) {
         }
         return mapping
     }
+
 
     fun getSourceFile(className: String, line: Int, classMappingLoaded: Map<Pair<String, Int>, Pair<String, Int>>):Pair<String,Int>? {
         return classMappingLoaded.get(Pair(className, line))

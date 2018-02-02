@@ -1,25 +1,26 @@
 package net.gosecure.spotbugs.datasource
 
-import net.gosecure.spotbugs.SpotBugsIssue
+import net.gosecure.spotbugs.LogWrapper
+import net.gosecure.spotbugs.model.SonarConnectionInfo
+import net.gosecure.spotbugs.model.SpotBugsIssue
 import org.apache.commons.io.IOUtils
+import org.apache.http.client.HttpClient
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.client.utils.URIBuilder
 import org.apache.http.impl.client.HttpClientBuilder
-import org.apache.maven.plugin.logging.Log
-import org.apache.maven.project.MavenProject
 import org.json.JSONObject
 
-class RemoteSonarSource(val log:Log, val hostUrl:String) {
+class RemoteSonarSource(val log: LogWrapper, val connectionInfo: SonarConnectionInfo, val httpClient: HttpClient) {
 
 
     /**
      * Get a list of Sonar issues that include status from manual review.
      */
-    fun getSonarIssues(project: MavenProject):List<SpotBugsIssue>  {
+    fun getSonarIssues(groupId:String, artifactId:String):List<SpotBugsIssue>  {
 
         val spotBugsIssues = ArrayList<SpotBugsIssue>()
 
-        val projectKey = project.groupId + ":" + project.artifactId
+        val projectKey = groupId + ":" + artifactId
 
 
         /*    val config = RequestConfig.custom()
@@ -29,8 +30,7 @@ class RemoteSonarSource(val log:Log, val hostUrl:String) {
         var n = 1
         var nbr_pages = 0
         while (n == 1 || n <= nbr_pages){
-            val client = HttpClientBuilder.create().build()
-            val uriIssues =  URIBuilder(hostUrl + "/api/issues/search")
+            val uriIssues =  URIBuilder(connectionInfo.url + "/api/issues/search")
                     .addParameter("componentKeys",projectKey)
                     .addParameter("ps", "500")
                     .addParameter("p",n.toString())
@@ -39,14 +39,15 @@ class RemoteSonarSource(val log:Log, val hostUrl:String) {
             val get = HttpGet(uriIssues)
             //get.config = config
 
-            val response = client.execute(get)
+            val response = httpClient.execute(get)
 
             val responseCode = response.statusLine.statusCode
 
             if(responseCode == 200) {
                 val contentStream = response.entity.content
 
-                val jsonObj = JSONObject(IOUtils.toString(contentStream,"UTF-8"))
+                val jsonString = IOUtils.toString(contentStream,"UTF-8")
+                val jsonObj = JSONObject(jsonString)
                 //log.info(jsonObj.toString())
 
                 if (nbr_pages == 0) {
@@ -88,7 +89,7 @@ class RemoteSonarSource(val log:Log, val hostUrl:String) {
                                 groupId,
                                 artifactId,
                                 status, author, rule,
-                                "", "", -1,"",issue_key)) //The last three values will be taken from spotbugs results..
+                                "", "", -1, "", issue_key)) //The last three values will be taken from spotbugs results..
                     }
                     catch(e:Exception){
                         log.error("Skipping element. Error occurs while parsing ${issue}",e)
