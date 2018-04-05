@@ -1,22 +1,21 @@
 package net.gosecure.spotbugs
 
 import net.gosecure.spotbugs.datasource.FindBugsReportSource
-import net.gosecure.spotbugs.datasource.Neo4jGraph
+import net.gosecure.spotbugs.datasource.GraphSource
 import net.gosecure.spotbugs.datasource.RemoteSonarSource
 import net.gosecure.spotbugs.model.SonarConnectionInfo
 import net.gosecure.spotbugs.model.SpotBugsIssue
 import org.apache.http.client.HttpClient
-import org.neo4j.graphdb.factory.GraphDatabaseFactory
 import java.io.File
 import java.io.FileInputStream
 import java.io.IOException
 
 /**
- * This class should be agnostic
+ * This class should be agnostic of platform. It will include the logic reuse by the CLI and Maven integration.
  */
-class ExportLogic(var log:LogWrapper,val client: HttpClient) {
+class ExportLogic(var log:LogWrapper) {
 
-    fun getSonarIssues(groupdId: String, artifactId: String): HashMap<String, SpotBugsIssue> {
+    fun getSonarIssues(groupdId: String, artifactId: String, client: HttpClient): HashMap<String, SpotBugsIssue> {
         //Sonar Export
 
         var sonarIssues: List<SpotBugsIssue> = mutableListOf()
@@ -86,53 +85,8 @@ class ExportLogic(var log:LogWrapper,val client: HttpClient) {
 
     fun graph(exportedIssues:ArrayList<SpotBugsIssue>,fileGraph:File) {
         //Integrating Neo4j metadata
+        GraphSource(log).addGraphMetadata(exportedIssues,fileGraph)
 
-        val db = GraphDatabaseFactory().newEmbeddedDatabase(fileGraph)
-        try {
-            val graphDb = Neo4jGraph(db)
-            val totalIssue = exportedIssues.size
-            var issueIndex = 0
-            for (issue in exportedIssues) {
-                issueIndex++
-                if (issue.methodSink != "") {
-                    val start = System.currentTimeMillis()
-
-                    issue.hasTaintedSource = false
-                    issue.hasSafeSource = false
-                    issue.hasUnknownSource = false
-
-                    if(issue.sourceMethod == null) {
-                        log.warn("No source method defined for the entry : $issue")
-                        continue
-                    }
-                    var nodes = graphDb.searchSource(issue.methodSink + "_p" + issue.methodSinkParameter, issue.sourceMethod!!)
-                    for (n in nodes) {
-                        when(n.state) {
-                            "SAFE" -> {
-                                issue.hasSafeSource = true
-                            }
-                            "TAINTED" -> {
-                                issue.hasTaintedSource = true
-                            }
-                            "UNKNOWN" -> {
-                                issue.hasUnknownSource = true
-                            }
-                            else -> {
-                                log.warn("Unknown state : ${n.state}")
-                            }
-                        }
-                    }
-
-
-                    val end = System.currentTimeMillis()
-                    log.info("Query executed ${end-start} ms (Tainted ${issue.hasTaintedSource}, Safe ${issue.hasSafeSource }, Unknown ${issue.hasUnknownSource})")
-                }
-                log.info("Issue %d - Progress %.2f %%".format(issueIndex, issueIndex * 100.0 / totalIssue))
-            }
-        }
-        finally {
-            db.shutdown();
-        }
 
     }
 
@@ -147,10 +101,10 @@ class ExportLogic(var log:LogWrapper,val client: HttpClient) {
         }
     }
 
-    fun exportCsv(exportedIssues: ArrayList<SpotBugsIssue>, aggregateResults: File) {
+    fun exportCsv(exportedIssues: ArrayList<SpotBugsIssue>, csvFile: File) {
         if(exportedIssues.size > 0) {
 
-            val writer = aggregateResults.printWriter()
+            val writer = csvFile.printWriter()
             writer.println("SourceFile,LineNumber,GroupId,ArtifactId,Author,BugType,CWE,MethodSink,UnknownSource,SourceMethod,HasTainted Source,HasSafeSource,HasUnknownSource,Status,Key")
             for(finalIssue in exportedIssues) {
 //                    var finalIssue = entry.value
@@ -169,4 +123,6 @@ class ExportLogic(var log:LogWrapper,val client: HttpClient) {
             writer.close()
         }
     }
+
+
 }

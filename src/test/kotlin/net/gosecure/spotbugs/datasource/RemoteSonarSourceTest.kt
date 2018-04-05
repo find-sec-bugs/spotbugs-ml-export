@@ -13,14 +13,14 @@ class RemoteSonarSourceTest : BaseHttpClientTestCase() {
 
     @Test
     fun testIssuesParsing() {
-        val logic = ExportLogic(DummyLogWrapper(),httpClient)
+        val logic = ExportLogic(DummyLogWrapper())
 
         //Mock response to parse
         val resp = HttpResponseMockBuilder("/sonar/responses/1.json").build()
         `when`(httpClient.execute(RequestMatcherBuilder("/api/issues/search").build()))
                 .thenReturn(resp)
 
-        val sonarIssues = logic.getSonarIssues("com.request", "request")
+        val sonarIssues = logic.getSonarIssues("com.request", "request",httpClient)
 
         assertEquals(sonarIssues.size,163)
 

@@ -1,12 +1,14 @@
 package net.gosecure.spotbugs.datasource
 
+import net.gosecure.spotbugs.datasource.graph.Neo4jGraph
 import org.neo4j.graphdb.factory.GraphDatabaseFactory
 import org.testng.annotations.Test
 import java.io.File
-import org.neo4j.graphdb.factory.GraphDatabaseSettings
 import java.nio.charset.Charset
 
-
+/**
+ * This is just a sandbox to test manually graph queries on multiples models.
+ */
 class Neo4jGraphTest {
 
     @Test(enabled = false)

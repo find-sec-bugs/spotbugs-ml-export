@@ -5,7 +5,7 @@ import org.apache.maven.plugins.annotations.Mojo
 import org.apache.maven.plugins.annotations.Parameter
 import org.apache.maven.project.MavenProject
 import weka.classifiers.*
-import net.gosecure.spotbugs.datasource.MLUtils
+import net.gosecure.spotbugs.datasource.ml.MLUtils
 import weka.classifiers.bayes.NaiveBayes
 
 @Mojo(name="train")

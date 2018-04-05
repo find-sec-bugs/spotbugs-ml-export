@@ -40,17 +40,50 @@
                     </execution>
                 </executions>
             </plugin>
+
+
+            <!-- Create the final package which include all dependencies -->
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <execution>
+                        <id>jar-with-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
+                            <finalName>spotbugsml</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
+                            <archive>
+                                <manifest>
+                                    <mainClass>net.gosecure.spotbugs.ExportCli</mainClass>
+                                </manifest>
+                                <addMavenDescriptor>false</addMavenDescriptor>
+                            </archive>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 
     <dependencies>
 
+        <!-- Kotlin!! -->
 
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
+
+        <!-- Machine Learning dependencies -->
 
         <dependency>
             <groupId>nz.ac.waikato.cms.weka</groupId>
@@ -62,6 +95,15 @@
             <artifactId>freemarker</artifactId>
             <version>2.3.20</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>com.esotericsoftware</groupId>
+            <artifactId>minlog</artifactId>
+            <version>1.3.0</version>
+        </dependency>
+
+        <!-- Maven Plugin API -->
 
         <dependency>
             <groupId>org.apache.maven</groupId>
@@ -89,6 +131,11 @@
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20170516</version>
+        </dependency>
+        <dependency>
+            <groupId>info.picocli</groupId>
+            <artifactId>picocli</artifactId>
+            <version>2.2.2</version>
         </dependency>
 
         <dependency>

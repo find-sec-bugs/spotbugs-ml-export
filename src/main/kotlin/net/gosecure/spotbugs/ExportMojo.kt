@@ -21,14 +21,14 @@ class ExportMojo : AbstractMojo() {
         LogWrapper.log = log //Enable Maven logger
 
         val client = HttpClientBuilder.create().build()
-        val logic = ExportLogic(logWrapper,client) //Injecting dependencies
+        val logic = ExportLogic(logWrapper) //Injecting dependencies
 
         val groupId    = project.groupId
         val artifactId = project.artifactId
 
 
         //Gather sonar issues
-        val sonarIssuesLookupTable = logic.getSonarIssues(groupId, artifactId)
+        val sonarIssuesLookupTable = logic.getSonarIssues(groupId, artifactId, client)
 
 
         //SpotBugs issues
@@ -68,23 +68,26 @@ class ExportMojo : AbstractMojo() {
 
 
         //Exported to CSV
-        val aggregateResults = File(sonarDir, "aggregate-results.csv")
-        aggregateResults.createNewFile()
+        val csvFile = File(sonarDir, "aggregate-results.csv")
+        csvFile.createNewFile()
         val sonarMlDir = File(buildDir, "spotbugs-ml")
-        logic.exportCsv(exportedIssues, aggregateResults)
+        logic.exportCsv(exportedIssues, csvFile)
 
 
     }
 
-
-
+    private fun getFindBugsResultFileOnMaven(buildDir:String): File {
+        val mvnFbPluginFile    = File(buildDir, "findbugsXml.xml")
+        val mvnSonarPluginFile = File(buildDir, "sonar/findbugs-result.xml")
+        return if (mvnFbPluginFile.exists()) mvnFbPluginFile  else mvnSonarPluginFile
+    }
 
     /**
      * Look at parent directory to find the graph present at the root directory.
      * TODO: Make a more elegant solution
      * @return Database directory or null if not found
      */
-    private fun getGraphFile(baseDir:String) : File? {
+    fun getGraphFile(baseDir:String) : File? {
         val testDir = File(baseDir)
         val testGraphFile = File(baseDir,"codegraph.db")
         if(testGraphFile.isDirectory) {
@@ -95,16 +98,5 @@ class ExportMojo : AbstractMojo() {
             return getGraphFile(parentDir)
         }
     }
-
-
-    private fun getFindBugsResultFileOnMaven(buildDir:String): File {
-        val mvnFbPluginFile    = File(buildDir, "findbugsXml.xml")
-        val mvnSonarPluginFile = File(buildDir, "sonar/findbugs-result.xml")
-        return if (mvnFbPluginFile.exists()) mvnFbPluginFile  else mvnSonarPluginFile
-    }
-
-    fun emptyIfNull(value:String?):String = value ?: ""
-
-
 
 }

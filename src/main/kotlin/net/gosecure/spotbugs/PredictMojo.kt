@@ -1,12 +1,10 @@
 package net.gosecure.spotbugs
 
-import net.gosecure.spotbugs.datasource.MLUtils
+import net.gosecure.spotbugs.datasource.ml.MLUtils
 import org.apache.maven.plugin.AbstractMojo
 import org.apache.maven.plugins.annotations.Mojo
 import org.apache.maven.plugins.annotations.Parameter
 import org.apache.maven.project.MavenProject
-import weka.classifiers.Classifier
-import weka.classifiers.bayes.NaiveBayes
 
 @Mojo(name="predict")
 class PredictMojo : AbstractMojo() {

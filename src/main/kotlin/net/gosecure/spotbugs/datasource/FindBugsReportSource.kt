@@ -27,14 +27,14 @@ class FindBugsReportSource(val log: LogWrapper) {
 
         val reader = SAXReader()
         val document = reader.read(findbugsResults)
-        val bugInstances = document.getRootElement().selectNodes("BugInstance")
+        val bugInstances = document.rootElement.selectNodes("BugInstance")
 
         for (bug in bugInstances) {
 
             val elem = bug as DefaultElement
             val type = elem.attribute("type").value
             var cweid = elem.attribute("cweid")?.value
-            var instanceHash = elem.attribute("instanceHash").value
+            var instanceHash = elem.attribute("instanceHash")?.value
             if(cweid == null) cweid = ""
 
             val sourceClass = getLineOfCode(elem)

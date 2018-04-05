@@ -1,4 +1,4 @@
-package net.gosecure.spotbugs.datasource
+package net.gosecure.spotbugs.datasource.ml
 
 import freemarker.template.Configuration
 import freemarker.template.TemplateException
@@ -135,7 +135,7 @@ class MLUtils {
 
         val issues = ArrayList<Issue>()
         var number = 0
-        for (i in 0..unlabeled.numInstances() - 1) {
+        for (i in 0 until (unlabeled.numInstances() - 1)) {
 
             val newInst = unlabeled.instance(i)
 

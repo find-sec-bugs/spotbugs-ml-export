@@ -1,9 +1,9 @@
-package net.gosecure.spotbugs.datasource
+package net.gosecure.spotbugs.datasource.graph
 
-import net.gosecure.spotbugs.datasource.graph.VariableNode
 import org.neo4j.graphdb.GraphDatabaseService
 import org.neo4j.graphdb.Node
 import org.neo4j.graphdb.Result
+import java.io.File
 
 class Neo4jGraph(val graphDb:GraphDatabaseService) {
 
