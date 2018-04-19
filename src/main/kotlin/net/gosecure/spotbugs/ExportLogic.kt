@@ -5,6 +5,7 @@ import net.gosecure.spotbugs.datasource.GraphSource
 import net.gosecure.spotbugs.datasource.RemoteSonarSource
 import net.gosecure.spotbugs.model.SonarConnectionInfo
 import net.gosecure.spotbugs.model.SpotBugsIssue
+import net.gosecure.spotbugs.sourcemapper.SourceCodeMapper
 import org.apache.http.client.HttpClient
 import java.io.File
 import java.io.FileInputStream
@@ -20,7 +21,7 @@ class ExportLogic(var log:LogWrapper) {
 
         var sonarIssues: List<SpotBugsIssue> = mutableListOf()
 
-        //FIXME: Temporarly hardcoded value
+        //FIXME: Temporarily hardcoded value
         val connectionInfo = SonarConnectionInfo("http://localhost:9000/","sonar","sonar")
 
         try {
@@ -37,18 +38,14 @@ class ExportLogic(var log:LogWrapper) {
         return sonarIssuesLookupTable
     }
 
-    fun getSpotBugsIssues(findbugsResults:File,classMappingFile: File): ArrayList<SpotBugsIssue> {
+    fun getSpotBugsIssues(findbugsResults:File,sourceCodeMapper: SourceCodeMapper): ArrayList<SpotBugsIssue> {
 
         if (!findbugsResults.exists()) {
             log.error("SpotBugs report (findbugsXml.xml) is missing")
             return ArrayList<SpotBugsIssue>()
         }
-        if (!classMappingFile.exists()) {
-            log.error("sonar/class_mapping.csv is missing")
-            return ArrayList<SpotBugsIssue>()
-        }
 
-        return FindBugsReportSource(log).getSpotBugsIssues(FileInputStream(findbugsResults),FileInputStream(classMappingFile))
+        return FindBugsReportSource(log).getSpotBugsIssues(FileInputStream(findbugsResults),sourceCodeMapper)
     }
 
     fun enrichSonarExportIssue(sonarIssuesLookupTable:HashMap<String, SpotBugsIssue>, spotBugsIssues:ArrayList<SpotBugsIssue>):ArrayList<SpotBugsIssue> {

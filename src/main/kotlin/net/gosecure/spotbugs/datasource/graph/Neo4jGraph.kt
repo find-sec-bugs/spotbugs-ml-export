@@ -21,8 +21,6 @@ WHERE
 RETURN source,sink,r1,node,r;
 """.trim(), hashMapOf("methodApi" to methodApi, "source" to source), graphDb)
 
-
-
             val listNode = HashSet<VariableNode>()
 
             for (row in execResult) {

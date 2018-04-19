@@ -2,6 +2,7 @@ package net.gosecure.spotbugs.datasource
 
 import net.gosecure.spotbugs.LogWrapper
 import net.gosecure.spotbugs.model.SpotBugsIssue
+import net.gosecure.spotbugs.sourcemapper.SourceCodeMapper
 import org.apache.maven.plugin.logging.Log
 import org.dom4j.Node
 import org.dom4j.io.SAXReader
@@ -16,11 +17,8 @@ class FindBugsReportSource(val log: LogWrapper) {
     /**
      * Get a list of SpotBugs issues
      */
-    fun getSpotBugsIssues(findbugsResults:InputStream,classMappingFile: InputStream):ArrayList<SpotBugsIssue> {
+    fun getSpotBugsIssues(findbugsResults:InputStream,classMapper: SourceCodeMapper):ArrayList<SpotBugsIssue> {
         val spotBugsIssues = ArrayList<SpotBugsIssue>()
-
-
-        val classMappingLoaded = getClassMapping(classMappingFile)
 
         //log.info("findbugs-result.xml: ${findbugsResults.exists()}")
         //log.info("class_mapping.csv  : ${classMappingFile.exists()}")
@@ -42,7 +40,7 @@ class FindBugsReportSource(val log: LogWrapper) {
                 log.warn("BugInstance has no start line of code  ($instanceHash)")
                 continue
             }
-            var sourceFile = getSourceFile(sourceClass.first,sourceClass.second, classMappingLoaded)
+            var sourceFile = classMapper.getSourceFile(sourceClass.first,sourceClass.second)
             if(sourceFile == null) {
                 log.warn("Unable to map the class ${sourceClass.first}:${sourceClass.second}")
                 //continue
@@ -136,27 +134,5 @@ class FindBugsReportSource(val log: LogWrapper) {
         return nodes
     }
 
-    fun getClassMapping(classMappingFile: InputStream):Map<Pair<String,Int>,Pair<String,Int>> {
-        val mapping = HashMap<Pair<String,Int>,Pair<String,Int>>()
-
-        for(line in classMappingFile.bufferedReader().lines()) {
-            val parts = line.split(",")
-            if(parts.size < 2) continue
-            var classPart = parts[0].split(":")
-            var filePart = parts[1].split(":")
-            if(classPart.size < 2 || filePart.size < 2) {
-                log.error("The Mapping is not properly formatted ($line)")
-                continue
-            }
-            if(mapping.get(Pair(classPart[0],Integer.parseInt(classPart[1]))) != null) continue
-            mapping.put(Pair(classPart[0],Integer.parseInt(classPart[1])), Pair(filePart[0],Integer.parseInt(filePart[1])))
-        }
-        return mapping
-    }
-
-
-    fun getSourceFile(className: String, line: Int, classMappingLoaded: Map<Pair<String, Int>, Pair<String, Int>>):Pair<String,Int>? {
-        return classMappingLoaded.get(Pair(className, line))
-    }
 
 }

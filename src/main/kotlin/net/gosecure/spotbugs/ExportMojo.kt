@@ -1,11 +1,13 @@
 package net.gosecure.spotbugs
 
+import net.gosecure.spotbugs.sourcemapper.FileSourceCodeMapper
 import org.apache.http.impl.client.HttpClientBuilder
 import org.apache.maven.plugin.AbstractMojo
 import org.apache.maven.plugins.annotations.Mojo
 import org.apache.maven.plugins.annotations.Parameter
 import org.apache.maven.project.MavenProject
 import java.io.File
+import java.io.FileInputStream
 
 @Mojo(name="export-csv")
 class ExportMojo : AbstractMojo() {
@@ -43,9 +45,11 @@ class ExportMojo : AbstractMojo() {
 
         val findbugsResults = getFindBugsResultFileOnMaven(buildDir)
         val classMappingFile = File(sonarDir, "class-mapping.csv")
+        if (!classMappingFile.exists()) {
+            throw RuntimeException("${classMappingFile.name} is missing")
+        }
 
-
-        var spotBugsIssues = logic.getSpotBugsIssues(findbugsResults,classMappingFile)
+        var spotBugsIssues = logic.getSpotBugsIssues(findbugsResults,FileSourceCodeMapper(FileInputStream(classMappingFile),logWrapper))
 
 
         //Sonar + SpotBugs
