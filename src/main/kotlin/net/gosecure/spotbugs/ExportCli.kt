@@ -47,12 +47,26 @@ class ExportCli : Runnable {
 
             logic.graph(spotBugsIssues,graphDatabase)
 
+
+            logic.updateArtifactIdForAllIssues(spotBugsIssues,"", guessArtifactId(findBugsReport.nameWithoutExtension))
+
             //Exported to CSV
-            val csvFile = File(".", "aggregate-results.csv")
+            val reportName =findBugsReport.nameWithoutExtension + ".csv"
+            val csvFile = File(".", reportName)
             csvFile.createNewFile()
             logic.exportCsv(spotBugsIssues, csvFile)
 
         }
+    }
+
+    /**
+     * CSV of vulnerabilities are likely to be merge into bigger aggregate dataset.
+     * For this reason, it
+     */
+    fun guessArtifactId(filename:String):String {
+        val regex = Regex("([^0-9]+)-([0-9\\.]{3,9})")
+        val res = regex.find(filename)?.groupValues?.get(1) ?: ""
+        return res
     }
 
     companion object {

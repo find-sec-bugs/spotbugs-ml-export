@@ -1,6 +1,7 @@
 package net.gosecure.spotbugs
 
 import net.gosecure.spotbugs.sourcemapper.FileSourceCodeMapper
+import net.gosecure.spotbugs.sourcemapper.JavaOnlySourceCodeMapper
 import org.apache.http.impl.client.HttpClientBuilder
 import org.apache.maven.plugin.AbstractMojo
 import org.apache.maven.plugins.annotations.Mojo
@@ -40,16 +41,23 @@ class ExportMojo : AbstractMojo() {
 
         if (!sonarDir.exists()) {
             log.warn("No sonar directory found in the project ${project!!.basedir}. Sonar must be runned prior to the export.")
-            return
+        }
+        else {
+            val classMappingFile = File(sonarDir, "class-mapping.csv")
+            if (!classMappingFile.exists()) {
+                throw RuntimeException("${classMappingFile.name} is missing")
+            }
         }
 
         val findbugsResults = getFindBugsResultFileOnMaven(buildDir)
-        val classMappingFile = File(sonarDir, "class-mapping.csv")
-        if (!classMappingFile.exists()) {
-            throw RuntimeException("${classMappingFile.name} is missing")
-        }
 
-        var spotBugsIssues = logic.getSpotBugsIssues(findbugsResults,FileSourceCodeMapper(FileInputStream(classMappingFile),logWrapper))
+
+        log.info("Using SpotBugs report located at ${findbugsResults.name}")
+
+        //var spotBugsIssues = logic.getSpotBugsIssues(findbugsResults,FileSourceCodeMapper(FileInputStream(classMappingFile),logWrapper))
+        var spotBugsIssues = logic.getSpotBugsIssues(findbugsResults,JavaOnlySourceCodeMapper())
+
+        logic.updateArtifactIdForAllIssues(spotBugsIssues, project.groupId, project.artifactId)
 
 
         //Sonar + SpotBugs
@@ -72,7 +80,7 @@ class ExportMojo : AbstractMojo() {
 
 
         //Exported to CSV
-        val csvFile = File(sonarDir, "aggregate-results.csv")
+        val csvFile = File(buildDir, "spotbugs-results.csv")
         csvFile.createNewFile()
         val sonarMlDir = File(buildDir, "spotbugs-ml")
         logic.exportCsv(exportedIssues, csvFile)
@@ -81,9 +89,12 @@ class ExportMojo : AbstractMojo() {
     }
 
     private fun getFindBugsResultFileOnMaven(buildDir:String): File {
-        val mvnFbPluginFile    = File(buildDir, "findbugsXml.xml")
-        val mvnSonarPluginFile = File(buildDir, "sonar/findbugs-result.xml")
-        return if (mvnFbPluginFile.exists()) mvnFbPluginFile  else mvnSonarPluginFile
+        val potentialReportLocation = arrayOf(File(buildDir, "findbugsXml.xml"),File(buildDir, "spotbugsXml.xml"),File(buildDir, "sonar/findbugs-result.xml"))
+
+        for(file in potentialReportLocation) {
+            if (file.exists()) return file
+        }
+        throw RuntimeException()
     }
 
     /**

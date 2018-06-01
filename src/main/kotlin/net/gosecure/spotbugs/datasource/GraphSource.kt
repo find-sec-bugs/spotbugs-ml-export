@@ -19,12 +19,13 @@ class GraphSource(val log: LogWrapper) {
                 if (issue.methodSink != "") {
                     val start = System.currentTimeMillis()
 
+                    //For many bugs graph queries will not applied. It is important to do the distinction between bugs
                     issue.hasTaintedSource = false
                     issue.hasSafeSource = false
                     issue.hasUnknownSource = false
 
                     if (issue.sourceMethod == null) {
-                        log.warn("No source method defined for the entry : $issue")
+                        //log.warn("No source method defined for the entry : $issue")
                         continue
                     }
                     var nodes = graphDb.searchSource(issue.methodSink + "_p" + issue.methodSinkParameter, issue.sourceMethod!!)

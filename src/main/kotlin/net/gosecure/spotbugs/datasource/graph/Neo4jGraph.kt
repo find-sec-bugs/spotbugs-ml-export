@@ -12,14 +12,20 @@ class Neo4jGraph(val graphDb:GraphDatabaseService) {
         val tx = graphDb.beginTx()
         try {
 
-            var execResult = queryGraph("""
-MATCH (source:Variable)-[r1:TRANSFER*0..5]->(node:Variable)-[r:TRANSFER]->(sink:Variable)
+            val query = """
+MATCH (source:Variable)-[r1:TRANSFER*0..8]->(node:Variable)-[r:TRANSFER]->(sink:Variable)
 WHERE
   source.state IN ["UNKNOWN", "SAFE", "TAINTED"] AND
   sink.name = ${"$"}methodApi AND
   node.source = ${"$"}source
 RETURN source,sink,r1,node,r;
-""".trim(), hashMapOf("methodApi" to methodApi, "source" to source), graphDb)
+""".trim()
+//            println("====")
+//            println(query)
+//            println("methodApi = $methodApi, source = $source")
+//            println("====")
+
+            var execResult = queryGraph(query, hashMapOf("methodApi" to methodApi, "source" to source), graphDb)
 
             val listNode = HashSet<VariableNode>()
 

@@ -48,6 +48,16 @@ class ExportLogic(var log:LogWrapper) {
         return FindBugsReportSource(log).getSpotBugsIssues(FileInputStream(findbugsResults),sourceCodeMapper)
     }
 
+    fun updateArtifactIdForAllIssues(issues:ArrayList<SpotBugsIssue> ,groupId:String, artifactId:String) {
+        if(groupId == "" && artifactId == "") {
+            return;
+        }
+        for(issue in issues) { // All issues will inherits the groupId and artifactId from the current project
+            issue.groupId    = groupId
+            issue.artifactId = artifactId
+        }
+    }
+
     fun enrichSonarExportIssue(sonarIssuesLookupTable:HashMap<String, SpotBugsIssue>, spotBugsIssues:ArrayList<SpotBugsIssue>):ArrayList<SpotBugsIssue> {
 
         val exportedIssues = ArrayList<SpotBugsIssue>()
@@ -102,18 +112,19 @@ class ExportLogic(var log:LogWrapper) {
         if(exportedIssues.size > 0) {
 
             val writer = csvFile.printWriter()
-            writer.println("SourceFile,LineNumber,GroupId,ArtifactId,Author,BugType,CWE,MethodSink,UnknownSource,SourceMethod,HasTainted Source,HasSafeSource,HasUnknownSource,Status,Key")
+            writer.println("m#SourceFile,D#GroupId,D#ArtifactId,D#Author,D#BugType,D#CWE,D#MethodSink," +
+                    "D#UnknownSource,D#SourceMethod,D#HasTaintedSource,D#HasSafeSource,D#HasUnknownSource,D#Status,m#Key")
             for(finalIssue in exportedIssues) {
 //                    var finalIssue = entry.value
-                writer.println("${finalIssue.sourceFile},${finalIssue.startLine}," +
+                writer.println("${finalIssue.sourceFile}:${finalIssue.startLine}," +
                         "${finalIssue.groupId},${finalIssue.artifactId}," +
-                        "${finalIssue.author},${finalIssue.bugType},"+
-                        "${finalIssue.cwe}," +
+                        "${finalIssue.author?:""},${finalIssue.bugType},"+
+                        "${finalIssue.cwe?:""}," +
                         "${finalIssue.methodSink},${finalIssue.unknownSource}," +
-                        "${finalIssue.sourceMethod},"+
+                        "${finalIssue.sourceMethod?:""},"+
                         "${finalIssue.hasTaintedSource?:""},${finalIssue.hasSafeSource?:""},${finalIssue.hasUnknownSource?:""}," +
-                        "${finalIssue.status}," +
-                        "${finalIssue.issueKey}")
+                        "${finalIssue.status?:""}," +
+                        "${finalIssue.issueKey?:""}")
             }
 
             writer.flush()
