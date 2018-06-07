@@ -10,6 +10,7 @@ import org.apache.http.client.HttpClient
 import java.io.File
 import java.io.FileInputStream
 import java.io.IOException
+import java.io.PrintWriter
 
 /**
  * This class should be agnostic of platform. It will include the logic reuse by the CLI and Maven integration.
@@ -108,21 +109,21 @@ class ExportLogic(var log:LogWrapper) {
         }
     }
 
-    fun exportCsv(exportedIssues: ArrayList<SpotBugsIssue>, csvFile: File) {
+    fun exportCsv(exportedIssues: ArrayList<SpotBugsIssue>, writer: PrintWriter) {
         if(exportedIssues.size > 0) {
 
-            val writer = csvFile.printWriter()
+            //val writer = csvFile.printWriter()
             writer.println("m#SourceFile,D#GroupId,D#ArtifactId,D#Author,D#BugType,D#CWE,D#MethodSink," +
                     "D#UnknownSource,D#SourceMethod,D#HasTaintedSource,D#HasSafeSource,D#HasUnknownSource,D#Status,m#Key")
             for(finalIssue in exportedIssues) {
 //                    var finalIssue = entry.value
                 writer.println("${finalIssue.sourceFile}:${finalIssue.startLine}," +
                         "${finalIssue.groupId},${finalIssue.artifactId}," +
-                        "${finalIssue.author?:""},${finalIssue.bugType},"+
-                        "${finalIssue.cwe?:""}," +
-                        "${finalIssue.methodSink},${finalIssue.unknownSource}," +
-                        "${finalIssue.sourceMethod?:""},"+
-                        "${finalIssue.hasTaintedSource?:""},${finalIssue.hasSafeSource?:""},${finalIssue.hasUnknownSource?:""}," +
+                        "${notEmpty(finalIssue.author,"UNKNOWN_AUTHOR")},${finalIssue.bugType},"+
+                        "${notEmpty(finalIssue.cwe,"NO_CWE")}," +
+                        "${notEmpty(finalIssue.methodSink,"NO_METHOD_SINK")},${notEmpty(finalIssue.unknownSource,"NO_UNKNOWN_SOURCE")}," +
+                        "${notEmpty(finalIssue.sourceMethod,"NO_SOURCE_METHOD")},"+
+                        "${notEmpty(finalIssue.hasTaintedSource,"NOT_APP")},${finalIssue.hasSafeSource?:"NOT_APP"},${finalIssue.hasUnknownSource?:"NOT_APP"}," +
                         "${finalIssue.status?:""}," +
                         "${finalIssue.issueKey?:""}")
             }
@@ -130,6 +131,15 @@ class ExportLogic(var log:LogWrapper) {
             writer.flush()
             writer.close()
         }
+    }
+
+    fun notEmpty(value:Any?,default:String):String {
+        if(value ==null) return default
+        if(value is String && value == "") return default
+        else
+            return if (value is Boolean) ""+value
+                else if(value is String) value
+                else ""
     }
 
 

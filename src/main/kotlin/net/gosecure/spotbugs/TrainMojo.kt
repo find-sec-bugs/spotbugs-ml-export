@@ -30,8 +30,7 @@ class TrainMojo: AbstractMojo() {
         dataFiltered.setClassIndex(dataFiltered.numAttributes() - 1)
 
         // Use a set of classifiers
-        val models = arrayOf<Classifier>(
-                NaiveBayes())
+        val models = arrayOf<Classifier>(NaiveBayes())
 
         // Run for each model
         for (j in models.indices) {

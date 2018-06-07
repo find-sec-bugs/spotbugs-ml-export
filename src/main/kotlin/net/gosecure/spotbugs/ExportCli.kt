@@ -54,7 +54,9 @@ class ExportCli : Runnable {
             val reportName =findBugsReport.nameWithoutExtension + ".csv"
             val csvFile = File(".", reportName)
             csvFile.createNewFile()
-            logic.exportCsv(spotBugsIssues, csvFile)
+
+            logWrapper.info("Exporting results to ${csvFile.path}")
+            logic.exportCsv(spotBugsIssues, csvFile.printWriter())
 
         }
     }

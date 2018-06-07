@@ -83,7 +83,8 @@ class ExportMojo : AbstractMojo() {
         val csvFile = File(buildDir, "spotbugs-results.csv")
         csvFile.createNewFile()
         val sonarMlDir = File(buildDir, "spotbugs-ml")
-        logic.exportCsv(exportedIssues, csvFile)
+        log.info("Exporting results to ${csvFile.path}")
+        logic.exportCsv(exportedIssues, csvFile.printWriter())
 
 
     }
