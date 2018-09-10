@@ -43,7 +43,7 @@
 
 
             <!-- Create the final package which include all dependencies -->
-            <plugin>
+            <!--<plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>2.3</version>
                 <executions>
@@ -68,7 +68,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
 
         </plugins>
     </build>

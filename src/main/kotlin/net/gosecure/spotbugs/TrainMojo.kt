@@ -15,9 +15,9 @@ class TrainMojo: AbstractMojo() {
 
     private lateinit var project: MavenProject
 
-    private val FILE_INPUT = "aggregate-results_classified_sample.csv"
-    private val FILE_OUTPUT = "aggregate-results_classified_sample.arff"
-    private val MODEL_SAVED = "test-saved-model.model"
+    private val FILE_INPUT = "spotbugs-results.csv"
+    private val FILE_OUTPUT = "spotbugs-results.arff"
+    private val MODEL_SAVED = "spotbugs-results-ml.model"
 
     override fun execute() {
         log.info("Training...")

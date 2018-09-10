@@ -10,7 +10,6 @@ import org.apache.maven.project.MavenProject
 class PredictMojo : AbstractMojo() {
 
     @Parameter(readonly = true, defaultValue = "\${project}")
-
     private lateinit var project: MavenProject
 
     private val FILE_INPUT = "aggregate-results_classified_sample.csv"

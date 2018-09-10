@@ -58,9 +58,7 @@ class MLUtils {
         var data = data
         //Filter metadatas (here SourceFile, Line, GroupId, ArtifactId, Author, key)
 
-        val options = arrayOfNulls<String>(2)
-        options[0] = "-R"
-        options[1] = "1,2,3,4,5,15"
+        val options = arrayOf("-R", "1,2,3,4,14")
         val remove = Remove()
         remove.setOptions(options)
         remove.setInputFormat(data)
@@ -112,11 +110,11 @@ class MLUtils {
         val confusionMatrix = eval.confusionMatrix()
         val confusionMatrixString = eval.toMatrixString()
 
-        println("Estimated Recal : " + recall)
-        println("Estimated Precision : " + precision)
-        println("Estimated F-measure : " + fmeasure)
-        println("Estimated Accuracy : " + accuracy)
-        println("Confusion Matrix : " + confusionMatrixString)
+        println("Estimated Recal : $recall")
+        println("Estimated Precision : $precision")
+        println("Estimated F-measure : $fmeasure")
+        println("Estimated Accuracy : $accuracy")
+        println("Confusion Matrix : $confusionMatrixString")
 
         outputHtmlTrain(project, cfg, recall, precision, fmeasure, accuracy, confusionMatrix)
     }

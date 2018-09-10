@@ -1,5 +1,6 @@
 package net.gosecure.spotbugs
 
+import net.gosecure.spotbugs.model.SpotBugsIssue
 import net.gosecure.spotbugs.sourcemapper.FileSourceCodeMapper
 import net.gosecure.spotbugs.sourcemapper.JavaOnlySourceCodeMapper
 import org.apache.http.impl.client.HttpClientBuilder
@@ -19,6 +20,10 @@ class ExportMojo : AbstractMojo() {
     fun Double.format(digits: Int) = java.lang.String.format("%.${digits}f", this)
 
     override fun execute() {
+
+        if(!project.isExecutionRoot()) {
+            return;
+        }
 
         val logWrapper = LogWrapper()
         LogWrapper.log = log //Enable Maven logger
@@ -49,19 +54,21 @@ class ExportMojo : AbstractMojo() {
             }
         }
 
-        val findbugsResults = getFindBugsResultFileOnMaven(buildDir)
+        val findBugsResults = getFindBugsResultFileOnMaven(project)
 
 
-        log.info("Using SpotBugs report located at ${findbugsResults.name}")
 
         //var spotBugsIssues = logic.getSpotBugsIssues(findbugsResults,FileSourceCodeMapper(FileInputStream(classMappingFile),logWrapper))
-        var spotBugsIssues = logic.getSpotBugsIssues(findbugsResults,JavaOnlySourceCodeMapper())
-
-        logic.updateArtifactIdForAllIssues(spotBugsIssues, project.groupId, project.artifactId)
+        var allSpotBugsIssues = ArrayList<SpotBugsIssue>()
+        for(singleResult in findBugsResults) {
+            log.info("Using SpotBugs report located at ${singleResult.name}")
+            allSpotBugsIssues.addAll(logic.getSpotBugsIssues(singleResult, JavaOnlySourceCodeMapper()))
+        }
+        logic.updateArtifactIdForAllIssues(allSpotBugsIssues, project.groupId, project.artifactId)
 
 
         //Sonar + SpotBugs
-        var exportedIssues = logic.enrichSonarExportIssue(sonarIssuesLookupTable, spotBugsIssues)
+        var exportedIssues = logic.enrichSonarExportIssue(sonarIssuesLookupTable, allSpotBugsIssues)
 
 
         //Add graph metadata
@@ -76,26 +83,37 @@ class ExportMojo : AbstractMojo() {
         }
 
         //Report coverage (sonar and SpotBugs combined)
-        logic.reportCoverage(exportedIssues, spotBugsIssues)
+        logic.reportCoverage(exportedIssues, allSpotBugsIssues)
 
 
         //Exported to CSV
-        val csvFile = File(buildDir, "spotbugs-results.csv")
+        val mlDir = File(buildDir, "/spotbugs-ml/")
+        if(!mlDir.exists()) {
+            mlDir.mkdir()
+        }
+        val csvFile = File(mlDir, "spotbugs-results.csv")
         csvFile.createNewFile()
-        val sonarMlDir = File(buildDir, "spotbugs-ml")
         log.info("Exporting results to ${csvFile.path}")
         logic.exportCsv(exportedIssues, csvFile.printWriter())
 
 
     }
 
-    private fun getFindBugsResultFileOnMaven(buildDir:String): File {
-        val potentialReportLocation = arrayOf(File(buildDir, "findbugsXml.xml"),File(buildDir, "spotbugsXml.xml"),File(buildDir, "sonar/findbugs-result.xml"))
+    private fun getFindBugsResultFileOnMaven(project:MavenProject): List<File> {
 
-        for(file in potentialReportLocation) {
-            if (file.exists()) return file
+        val allFiles = ArrayList<File>()
+        for (report in arrayOf("findbugsXml.xml","spotbugsXml.xml")) { //,"findbugs-result.xml"
+
+            val search = FileSearchUtil()
+            search.searchDirectory(project.basedir, report)
+            allFiles.addAll(search.getResult())
         }
-        throw RuntimeException()
+
+        if(allFiles.size == 0) {
+            throw RuntimeException("Unable to find the spotbugs/findbugs report")
+        }
+
+        return allFiles
     }
 
     /**

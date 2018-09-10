@@ -4,6 +4,7 @@ import net.gosecure.spotbugs.datasource.FindBugsReportSource
 import net.gosecure.spotbugs.datasource.GraphSource
 import net.gosecure.spotbugs.datasource.RemoteSonarSource
 import net.gosecure.spotbugs.model.SonarConnectionInfo
+import net.gosecure.spotbugs.model.SonarUtil
 import net.gosecure.spotbugs.model.SpotBugsIssue
 import net.gosecure.spotbugs.sourcemapper.SourceCodeMapper
 import org.apache.http.client.HttpClient
@@ -70,7 +71,7 @@ class ExportLogic(var log:LogWrapper) {
             //Integrating SonarQube metadata
             for (sbIssue in spotBugsIssues) {
 
-                var existingIssue = sonarIssuesLookupTable.get(sbIssue.getKey())
+                var existingIssue = SonarUtil().getIssueFromLookupTable(sonarIssuesLookupTable,sbIssue)
                 if (existingIssue != null) {
                     existingIssue.cwe = sbIssue.cwe
                     existingIssue.methodSink = sbIssue.methodSink

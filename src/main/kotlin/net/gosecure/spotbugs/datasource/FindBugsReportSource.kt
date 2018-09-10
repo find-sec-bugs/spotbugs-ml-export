@@ -82,14 +82,14 @@ class FindBugsReportSource(val log: LogWrapper) {
         val methodNodes = elem.selectNodes("Method")
         for(meth in methodNodes) {
             val elem = meth as DefaultElement
-            val isPrimary = elem.attribute("primary")?.value
-            if(isPrimary == "true") {
-                val className = elem.attribute("classname")?.value!!.replace('.','/')
-                val name = elem.attribute("name")?.value
-                val signature = elem.attribute("signature")?.value
+            //val isPrimary = elem.attribute("primary")?.value
+            //if(isPrimary == "true")
 
-                return "$className.$name$signature"
-            }
+            val className = elem.attribute("classname")?.value!!.replace('.','/')
+            val name = elem.attribute("name")?.value
+            val signature = elem.attribute("signature")?.value
+
+            return "$className.$name$signature"
         }
 
         return null
